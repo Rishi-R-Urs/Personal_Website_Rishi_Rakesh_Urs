@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects — Rishi Rakesh Urs</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .hero {
+      background: var(--hero);
+      border-bottom: 1px solid var(--line);
+      padding: 48px 0 36px;
+      text-align: center;
+      box-shadow: inset 0 -8px 24px rgba(0,0,0,0.04);
+    }
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 2.2rem;
+      margin: 0;
+      color: #111827;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    .project {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 24px 30px 28px;
+      margin-bottom: 26px;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .project:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 38px rgba(0,0,0,0.08);
+    }
+    .project h2 {
+      margin-top: 0;
+      font-size: 1.25rem;
+      color: #111827;
+    }
+    .date {
+      font-size: 0.96rem;
+      color: #4b5563;
+      margin-bottom: 6px;
+    }
+    .assoc {
+      font-size: 0.95rem;
+      color: #6b7280;
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+    .project p {
+      margin: 10px 0 12px;
+      line-height: 1.6;
+      color: #374151;
+      font-size: 1.02rem;
+    }
+    strong {
+      font-weight: 600;
+      color: #1f2937;
+    }
+    .skills {
+      font-size: 0.95rem;
+      color: #374151;
+      margin: 8px 0 16px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      font-family: "Inter", sans-serif;
+      font-weight: 600;
+      font-size: 0.96rem;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid #cbd5e1;
+      background: #1f2937;
+      color: #fff;
+      text-decoration: none;
+      transition: background .2s ease, transform .15s ease;
+    }
+    .btn:hover {
+      background: #111827;
+      transform: translateY(-1px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      border-top: 1px solid var(--line);
+      color: #555;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="topbar">
+      <a class="brand" href="index.html">Rishi&nbsp;Rakesh&nbsp;Urs</a>
+      <button class="nav-toggle" aria-label="Open Menu">☰</button>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="travel.html">Travel</a>
+        <a class="active" href="projects.html">Projects</a>
+        <a href="experience.html">Experience</a>
+        <a href="hobbies.html">Hobbies</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Projects</h1>
+  </section>
+
+  <main>
+
+    <!-- 1. Ecosystem Modeling -->
+    <section class="project">
+      <h2>Ecosystem Modeling — Predator–Prey Simulation</h2>
+      <p class="date">Jun 2025 – Jun 2025</p>
+      <p class="assoc">Associated with Northeastern University</p>
+      <p>Designed a <strong>fox–rabbit ecosystem simulation</strong> on a 200×200 toroidal grid that incorporates rule-based movement, feeding, reproduction, and starvation. Constructed the fundamental <strong>Animal</strong> and <strong>Field</strong> classes, optimized predator feeding with <strong>O(1) lookups</strong>, and vectorized grass regrowth for efficient 10,000-frame runs. Demonstrated strong work ethic by refining model parameters through extensive tuning, surpassing requirements and earning instructor recognition for delivering visualizations described as “a bird’s-eye view of a real field.”</p>
+      <p class="skills"><strong>Skills:</strong> Work Ethic · Extensive Tuning · Data Visualization · Dynamic Simulation · Python · NumPy · Matplotlib · Object-Oriented Programming (OOP)</p>
+      <div class="buttons">
+        <a href="https://github.com/Rishi-R-Urs/Ecosystem-Modeling-Predator-Prey-Simulation-Foxes-vs-Rabbits" class="btn" target="_blank">GitHub</a>
+      </div>
+    </section>
+
+    <!-- 2. Connecticut Dashboard -->
+    <section class="project">
+      <h2>Connecticut Real Estate Sales Dashboard</h2>
+      <p class="date">May 2025 – May 2025</p>
+      <p class="assoc">Associated with Northeastern University</p>
+      <p>Collaborated in a group to design and build a financial interactive <strong>Panel dashboard</strong> analyzing 20+ years of Connecticut real estate transactions. Built a strong data pipeline for <strong>geospatial parsing (WKT → lat/lon)</strong>, numeric data cleaning, and <strong>dynamic filters</strong> for year, town, type, and price. Ventured beyond course framework by creating the interactive map visualization independently, balancing learning, testing, and delivery under tight timelines.</p>
+      <p class="skills"><strong>Skills:</strong> Teamwork · Self Learning · Data Visualization · Data Preprocessing · Geospatial Modeling · Python · Pandas · Plotly · Panel · Tabulator</p>
+      <div class="buttons">
+        <a href="https://github.com/Rishi-R-Urs/Connecticut-Real-Estate-Sales-Dashboard" class="btn" target="_blank">GitHub</a>
+      </div>
+    </section>
+
+    <!-- 3. Swim Standard -->
+    <section class="project">
+      <h2>Swim Standard — Coaching Assistant</h2>
+      <p class="date">Mar 2025 – May 2025</p>
+      <p class="assoc">Associated with Northeastern University</p>
+      <p>Developed a streamlined coaching dashboard combining <strong>ML-based power-law regression</strong> and real-time lap-time comparisons, achieving <strong>&lt;3s error</strong> between predicted and actual results. Automated workout tracking with a <strong>reusable 290-exercise CSV catalog</strong>, reducing manual testing by 4.5 hours and supporting data-driven performance optimization for athletes and coaches.</p>
+      <p class="skills"><strong>Skills:</strong> Machine Learning · Regression Modeling · Data Visualization · Predictive Analytics · Python · Pandas · NumPy · Matplotlib</p>
+      <div class="buttons">
+        <a href="https://github.com/Rishi-R-Urs/Swim_Standard" class="btn" target="_blank">GitHub</a>
+      </div>
+    </section>
+
+    <!-- 4. Vidyaashram Franchisee Strategy -->
+    <section class="project">
+      <h2>An Evaluation of Vidyaashram’s Franchisee Growth Strategy</h2>
+      <p class="date">Sep 2022 – May 2023</p>
+      <p class="assoc">Associated with Canadian International School</p>
+      <p>Answered the question: <em>“Should Vidyaashram use franchising strategy to expand its horizons in educational services to improve its market share?”</em> Conducted primary research and applied strategic and financial analysis frameworks to evaluate feasibility, profitability, and scalability.</p>
+      <p class="skills"><strong>Skills:</strong> Primary Research · Marketing Strategy · Financial Analysis</p>
+      <div class="buttons">
+        <a href="https://www.linkedin.com/in/rishi-rakesh-urs/details/projects/" class="btn" target="_blank">View on LinkedIn</a>
+      </div>
+    </section>
+
+    <!-- 5. Mathematical Model on Economic Factors -->
+    <section class="project">
+      <h2>Mathematical Model Representing the Impact of Economic Factors on Commodities and Rates</h2>
+      <p class="date">Sep 2022 – May 2023</p>
+      <p class="assoc">Associated with Canadian International School</p>
+      <p>Created statistical models analyzing the correlation between economic indicators—such as exchange rates, repo rates, and gold prices—using linear and polynomial regression in MS Excel. Conducted <strong>hypothesis testing</strong> and correlation coefficient analysis to measure variable dependencies and identify patterns that inform optimal investment timing.</p>
+      <p class="skills"><strong>Skills:</strong> Financial Analysis · Mathematical Modeling · Economic Research · Statistical Modeling</p>
+      <div class="buttons">
+        <a href="https://www.linkedin.com/in/rishi-rakesh-urs/details/projects/" class="btn" target="_blank">View on LinkedIn</a>
+      </div>
+    </section>
+
+    <!-- 6. Organizational Structure Project -->
+    <section class="project">
+      <h2>The Contribution of Organizational Structure and Culture to Financial Performance</h2>
+      <p class="date">Sep 2022 – May 2023</p>
+      <p class="assoc">Associated with Canadian International School</p>
+      <p>Explored the question: <em>“To what extent do changes in McDonald’s organizational structure and culture contribute to its financial performance?”</em> Conducted qualitative and quantitative analysis on organizational behavior, reporting relationships, and financial efficiency within multinational operations.</p>
+      <p class="skills"><strong>Skills:</strong> Financial Analysis · Organizational Culture · Organizational Behavior · Research · Report Writing</p>
+      <div class="buttons">
+        <a href="https://www.linkedin.com/in/rishi-rakesh-urs/details/projects/" class="btn" target="_blank">View on LinkedIn</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>© <span id="year"></span> Rishi Urs</footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Travel with Me — Rishi Rakesh Urs</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+
+  <style>
+    /* Cover image section */
+    .travel-cover {
+      position: relative;
+      overflow: hidden;
+    }
+    .travel-cover img {
+      display: block;
+      width: 100%;
+      height: 42vh;
+      min-height: 320px;
+      max-height: 520px;
+      object-fit: cover;
+      object-position: 50% 40%;
+      border-bottom: 2px solid var(--line);
+      filter: brightness(0.92) contrast(1.05) saturate(1.05);
+    }
+
+    /* Blue top banner */
+    .page-hero {
+      background: var(--hero);
+      border-top: 1px solid var(--line);
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.05) inset;
+      padding: 28px 0 22px;
+    }
+    .page-title {
+      margin: 0;
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(34px, 4.6vw, 48px);
+      letter-spacing: 0.2px;
+      text-align: center;
+    }
+
+    /* Quick city links */
+    .jump {
+      text-align: center;
+      margin: 14px auto 6px;
+      padding: 0 12px;
+    }
+    .jump a {
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      text-decoration: none;
+      color: #334155;
+      font-weight: 600;
+      margin: 0 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid #e4ebf2;
+      background: #f7f9fc;
+    }
+    .jump a:hover {
+      background: #eef3f8;
+    }
+
+    /* Album layout */
+    .album {
+      max-width: 1120px;
+      margin: 22px auto 48px;
+      padding: 0 16px;
+    }
+    .city {
+      margin: 20px 0 10px;
+      font-size: 1.15rem;
+      letter-spacing: 0.02em;
+      color: #26313d;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+    .tile {
+      display: block;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .tile:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+    }
+    .tile img {
+      display: block;
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      object-position: center;
+    }
+    .caption {
+      padding: 10px 12px;
+      font-size: 0.95rem;
+      color: #1a2630;
+      border-top: 1px solid var(--line);
+      background: #fafbfd;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="topbar">
+      <a class="brand" href="index.html">Rishi&nbsp;Rakesh&nbsp;Urs</a>
+      <button class="nav-toggle" aria-label="Open Menu">☰</button>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a class="active" href="travel.html">Travel</a>
+        <a href="projects.html">Projects</a>
+        <a href="experience.html">Experience</a>
+        <a href="hobbies.html">Hobbies</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <div id="progress"></div>
+
+  <!-- Cover image -->
+  <section class="travel-cover">
+    <img src="Personal_Website_Travel_With_Me.jpg" alt="Travel with Me cover image" />
+  </section>
+
+  <!-- Blue banner -->
+  <section class="page-hero">
+    <h1 class="page-title">Travel with Me</h1>
+  </section>
+
+  <!-- City jump links -->
+  <div class="jump">
+    <a href="#boston">Boston</a>
+    <a href="#sanfrancisco">San Francisco</a>
+    <a href="#losangeles">Los Angeles</a>
+    <a href="#laketahoe">Lake Tahoe</a>
+    <a href="#yosemite">Yosemite</a>
+    <a href="#edinburgh">Edinburgh</a>
+    <a href="#marrakech">Marrakech</a>
+    <a href="#sanjuan">San Juan</a>
+    <a href="#india">India</a>
+  </div>
+
+  <!-- Album -->
+  <main class="album">
+    <!-- Boston -->
+    <h2 id="boston" class="city">Boston</h2>
+    <div class="gallery">
+      <a class="tile" href="Personal_Website_Boston_1.png" target="_blank">
+        <img src="Personal_Website_Boston_1.png" alt="Boston — 1" />
+        <div class="caption">Boston — 1</div>
+      </a>
+      <a class="tile" href="Personal_Website_Boston_2.jpg" target="_blank">
+        <img src="Personal_Website_Boston_2.jpg" alt="Boston — 2" />
+        <div class="caption">Boston — 2</div>
+      </a>
+    </div>
+
+    <!-- San Francisco -->
+    <h2 id="sanfrancisco" class="city">San Francisco</h2>
+    <div class="gallery">
+      <a class="tile" href="Personal_Website_San_Francisco_1.JPG" target="_blank"><img src="Personal_Website_San_Francisco_1.JPG" alt="San Francisco — 1" /><div class="caption">San Francisco — 1</div></a>
+      <a class="tile" href="Personal_Website_San_Francisco_2.JPG" target="_blank"><img src="Personal_Website_San_Francisco_2.JPG" alt="San Francisco — 2" /><div class="caption">San Francisco — 2</div></a>
+      <a class="tile" href="Personal_Website_San_Francisco_3.JPG" target="_blank"><img src="Personal_Website_San_Francisco_3.JPG" alt="San Francisco — 3" /><div class="caption">San Francisco — 3</div></a>
+      <a class="tile" href="Personal_Website_San_Francisco_4.JPG" target="_blank"><img src="Personal_Website_San_Francisco_4.JPG" alt="San Francisco — 4" /><div class="caption">San Francisco — 4</div></a>
+      <a class="tile" href="Personal_Website_San_Francisco_5.JPG" target="_blank"><img src="Personal_Website_San_Francisco_5.JPG" alt="San Francisco — 5" /><div class="caption">San Francisco — 5</div></a>
+      <a class="tile" href="Personal_Website_San_Francisco_6.JPG" target="_blank"><img src="Personal_Website_San_Francisco_6.JPG" alt="San Francisco — 6" /><div class="caption">San Francisco — 6</div></a>
+      <a class="tile" href="Personal_Website_San_Francisco_7.jpg" target="_blank"><img src="Personal_Website_San_Francisco_7.jpg" alt="San Francisco — 7" /><div class="caption">San Francisco — 7</div></a>
+    </div>
+
+    <!-- Los Angeles -->
+    <h2 id="losangeles" class="city">Los Angeles</h2>
+    <div class="gallery">
+      <a class="tile" href="Personal_Website_Los_Angeles_1.JPG" target="_blank"><img src="Personal_Website_Los_Angeles_1.JPG" alt="Los Angeles — 1" /><div class="caption">Los Angeles — 1</div></a>
+      <a class="tile" href="Personal_Website_Los_Angleles_2.JPG" target="_blank"><img src="Personal_Website_Los_Angleles_2.JPG" alt="Los Angeles — 2" /><div class="caption">Los Angeles — 2</div></a>
+      <a class="tile" href="Personal_Website_Los_Angeles_3.JPG" target="_blank"><img src="Personal_Website_Los_Angeles_3.JPG" alt="Los Angeles — 3" /><div class="caption">Los Angeles — 3</div></a>
+      <a class="tile" href="Personal_Website_Los_Angeles_4.jpg" target="_blank"><img src="Personal_Website_Los_Angeles_4.jpg" alt="Los Angeles — 4" /><div class="caption">Los Angeles — 4</div></a>
+    </div>
+
+    <!-- Lake Tahoe -->
+    <h2 id="laketahoe" class="city">Lake Tahoe</h2>
+    <div class="gallery">
+      <a class="tile" href="Personal_Website_Lake_Tahoe_1.JPG" target="_blank"><img src="Personal_Website_Lake_Tahoe_1.JPG" alt="Lake Tahoe — 1" /><div class="caption">Lake Tahoe — 1</div></a>
+      <a class="tile" href="Personal_Website_Lake_Tahoe_2.JPG" target="_blank"><img src="Personal_Website_Lake_Tahoe_2.JPG" alt="Lake Tahoe — 2" /><div class="caption">Lake Tahoe — 2</div></a>
+    </div>
+
+    <!-- Yosemite -->
+    <h2 id="yosemite" class="city">Yosemite</h2>
+    <div class="gallery">
+      <a class="tile" href="Personal_Website_Hiking_Yosemite_1.jpg" target="_blank"><img src="Personal_Website_Hiking_Yosemite_1.jpg" alt="Yosemite — 1" /><div class="caption">Yosemite — 1</div></a>
+      <a class="tile" href="Personal_Website_Hiking_Yosemite_2.jpg" target="_blank"><img src="Personal_Website_Hiking_Yosemite_2.jpg" alt="Yosemite — 2" /><div class="caption">Yosemite — 2</div></a>
+    </div>
+
+    <!-- Edinburgh -->
+    <h2 id="edinburgh" class="city">Edinburgh</h2>
+    <div class="gallery">
+      <a class="tile" href="Personal_Website_Edinburgh_1.jpg" target="_blank"><img src="Personal_Website_Edinburgh_1.jpg" alt="Edinburgh — 1" /><div class="caption">Edinburgh — 1</div></a>
+    </div>
+
+    <!-- Marrakech -->
+    <h2 id="marrakech" class="city">Marrakech, Morocco</h2>
+    <div class="gallery">
+      <a class="tile" href="Personal_Website_Marrakech_Morocco_1.jpg" target="_blank"><img src="Personal_Website_Marrakech_Morocco_1.jpg" alt="Marrakech — 1" /><div class="caption">Marrakech — 1</div></a>
+    </div>
+
+    <!-- San Juan -->
+    <h2 id="sanjuan" class="city">San Juan</h2>
+    <div class="gallery">
+      <a class="tile" href="Personal_Website_San_Juan_1.jpg" target="_blank"><img src="Personal_Website_San_Juan_1.jpg" alt="San Juan — 1" /><div class="caption">San Juan — 1</div></a>
+      <a class="tile" href="Personal_Website_San_Juan_2.jpg" target="_blank"><img src="Personal_Website_San_Juan_2.jpg" alt="San Juan — 2" /><div class="caption">San Juan — 2</div></a>
+      <a class="tile" href="Personal_Website_San_Juan_3.jpg" target="_blank"><img src="Personal_Website_San_Juan_3.jpg" alt="San Juan — 3" /><div class="caption">San Juan — 3</div></a>
+      <a class="tile" href="Personal_Website_San_Juan_4.jpg" target="_blank"><img src="Personal_Website_San_Juan_4.jpg" alt="San Juan — 4" /><div class="caption">San Juan — 4</div></a>
+    </div>
+
+    <!-- India -->
+    <h2 id="india" class="city">India</h2>
+    <div class="gallery">
+      <a class="tile" href="Personal_Website_India_1.JPG" target="_blank"><img src="Personal_Website_India_1.JPG" alt="India — 1" /><div class="caption">India — 1</div></a>
+      <a class="tile" href="Personal_Website_India_2.JPG" target="_blank"><img src="Personal_Website_India_2.JPG" alt="India — 2" /><div class="caption">India — 2</div></a>
+      <a class="tile" href="Personal_Website_India_3.jpg" target="_blank"><img src="Personal_Website_India_3.jpg" alt="India — 3" /><div class="caption">India — 3</div></a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="tiny">© <span id="year"></span> Rishi Urs</div>
+  </footer>
+</body>
+</html>
+

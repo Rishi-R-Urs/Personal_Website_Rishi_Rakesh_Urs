@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hobbies — Rishi Rakesh Urs</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .hero {
+      background: var(--hero);
+      border-bottom: 1px solid var(--line);
+      padding: 48px 0 36px;
+      text-align: center;
+      box-shadow: inset 0 -8px 24px rgba(0,0,0,0.04);
+    }
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 2.2rem;
+      margin: 0;
+      color: #111827;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    .hobby {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 24px 30px 26px;
+      margin-bottom: 26px;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .hobby:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 38px rgba(0,0,0,0.08);
+    }
+    .hobby h2 {
+      margin-top: 0;
+      font-size: 1.25rem;
+      color: #111827;
+    }
+    .hobby p {
+      margin: 10px 0 12px;
+      line-height: 1.6;
+      color: #374151;
+      font-size: 1.02rem;
+    }
+    ul {
+      margin: 10px 0 0 20px;
+      color: #374151;
+      font-size: 1rem;
+    }
+
+    a {
+      color: #355fa6;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      border-top: 1px solid var(--line);
+      color: #555;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="topbar">
+      <a class="brand" href="index.html">Rishi&nbsp;Rakesh&nbsp;Urs</a>
+      <button class="nav-toggle" aria-label="Open Menu">☰</button>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="travel.html">Travel</a>
+        <a href="projects.html">Projects</a>
+        <a href="experience.html">Experience</a>
+        <a class="active" href="hobbies.html">Hobbies</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Hobbies</h1>
+  </section>
+
+  <main>
+
+    <!-- Swimming -->
+    <section class="hobby">
+      <h2>Swimming</h2>
+      <p>State-level IM gold medalist and lifelong water person—swimming keeps my head clear and my routines disciplined. I approach training with curiosity, consistency, and focus.</p>
+      <ul>
+        <li>State-level competitive swimmer (IM gold medalist)</li>
+      </ul>
+    </section>
+
+    <!-- Digital Art -->
+    <section class="hobby">
+      <h2>Digital Art</h2>
+      <p>I sketch with a tablet. I enjoy creating quiet, minimalist compositions that emphasize light, form, and negative space—capturing stillness in motion.</p>
+      <ul>
+        <li>Digital illustrations inspired by travel and everyday observation</li>
+        <li>Emphasis on light, contrast, and mood through subtle tones</li>
+      </ul>
+    </section>
+
+    <!-- Horse Riding -->
+    <section class="hobby">
+      <h2>Horse Riding</h2>
+      <p>Focus, posture, and subtle cues—riding reminds me how much communication can happen without words. It’s equal parts balance, trust, and mindfulness.</p>
+      <ul>
+        <li>Trail rides for calm, not speed</li>
+        <li>Form & balance practice</li>
+        <li>Patience and trust-building exercises</li>
+      </ul>
+    </section>
+
+    <!-- Theatre -->
+    <section class="hobby">
+      <h2>Theatre</h2>
+      <p>Took part in Literature and Performance in High School as part of the IB Diploma, exploring how emotion, character, and language intersect on stage. The experience strengthened both my confidence and communication abilities.</p>
+      <ul>
+        <li>Improved public speaking and stage presence</li>
+        <li>Developed empathy and teamwork through ensemble work</li>
+        <li>Sharpened creative thinking and adaptability</li>
+        <li>Enhanced storytelling and audience engagement skills</li>
+      </ul>
+    </section>
+
+    <!-- Travel -->
+    <section class="hobby">
+      <h2>Travel</h2>
+      <p>Exploring new places broadens my perspective and creativity. From coastal sunsets to bustling cities, I document my experiences through photos and stories.</p>
+      <ul>
+        <li>Love discovering diverse cultures, cuisines, and landscapes</li>
+        <li>View my full travel experiences <a href="travel.html">here →</a></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    © <span id="year"></span> Rishi Urs
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
+

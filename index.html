@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rishi Rakesh Urs — Home</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+
+  <style>
+    /* Hero photo */
+    .hero-photo {
+      width: 100%;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 48vh;
+      min-height: 340px;
+      max-height: 560px;
+      display: block;
+      object-fit: cover;
+      object-position: 35% 40%;
+      filter: brightness(0.98) contrast(1.02);
+    }
+
+    /* Blue band */
+    .band {
+      background: var(--hero);
+      border-top: 1px solid var(--line);
+      box-shadow: 0 -10px 30px rgba(0,0,0,.05) inset;
+      padding: 28px 0 14px; /* tightened bottom space */
+    }
+
+    /* Buttons */
+    .selector {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      margin: 12px auto 20px; /* slightly reduced bottom margin */
+      max-width: 1150px;
+      padding: 0 16px;
+    }
+    .selector .pill {
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      border: 1px solid var(--line);
+      background: #f8fafc;
+      padding: 13px 22px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background .18s ease, transform .18s ease, box-shadow .18s ease;
+      box-shadow: var(--shadow);
+    }
+    .selector .pill:hover { transform: translateY(-1px); }
+    .selector .pill.active {
+      background: #5b6c8f;
+      color: #fff;
+      border-color: #5b6c8f;
+    }
+
+    /* Cards */
+    .section-cards {
+      max-width: 1180px;
+      margin: 0 auto 42px; /* reduced vertical spacing */
+      padding: 0 20px 10px; /* tightened padding below */
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px,1fr));
+      gap: 24px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 22px 26px 20px;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 46px rgba(0,0,0,.08);
+    }
+    .card h3 {
+      margin: 2px 0 10px;
+      font-size: 1.2rem;
+      color: #18222c;
+    }
+    .card p {
+      margin: 0 0 14px;
+      color: #374151;
+      line-height: 1.6;
+      font-size: 1.02rem;
+    }
+    .card a {
+      font-weight: 700;
+      color: #355fa6;
+      text-decoration: none;
+      font-size: 1.02rem;
+    }
+    .card a:hover { text-decoration: underline; }
+
+    /* Groups */
+    .group { display: none; }
+    .group.active { display: contents; }
+
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      border-top: 1px solid var(--line);
+      color: #555;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .selector .pill {
+        font-size: 1rem;
+        padding: 11px 18px;
+      }
+      .card {
+        padding: 18px 20px 18px;
+      }
+      .card h3 { font-size: 1.1rem; }
+      .card p { font-size: 1rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="topbar">
+      <a class="brand" href="index.html">Rishi&nbsp;Rakesh&nbsp;Urs</a>
+      <button class="nav-toggle" aria-label="Open Menu">☰</button>
+      <nav class="site-nav">
+        <a class="active" href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="travel.html">Travel</a>
+        <a href="projects.html">Projects</a>
+        <a href="experience.html">Experience</a>
+        <a href="hobbies.html">Hobbies</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <div id="progress"></div>
+
+  <!-- Hero -->
+  <section class="hero-photo">
+    <img src="Self_Photo_Website.jpg" alt="Rishi Rakesh Urs portrait" />
+  </section>
+
+  <!-- Selector Section -->
+  <section class="band">
+    <div class="selector" id="selector">
+      <button class="pill active" data-target="about">Learn about Rishi</button>
+      <button class="pill" data-target="travel">Travel with Rishi</button>
+      <button class="pill" data-target="projects">View Projects</button>
+      <button class="pill" data-target="experience">View Experiences</button>
+      <button class="pill" data-target="hobbies">View Hobbies</button>
+      <button class="pill" data-target="contact">Contact Rishi</button>
+    </div>
+
+    <div class="section-cards">
+      <!-- About -->
+      <div class="group active" data-group="about">
+        <article class="card">
+          <h3>Who I Am</h3>
+          <p>Could numbers narrate human stories? I explore this through ML, clear visuals, and practical analysis—focused on making insights useful.</p>
+          <a href="about.html">See details →</a>
+        </article>
+        <article class="card">
+          <h3>Facts</h3>
+          <p>B.Sc. Data Science & Business Administration (Finance/FinTech) @ Northeastern; Boston-based; interests in Finance, AI, ML, and app dev.</p>
+          <a href="about.html#facts">See details →</a>
+        </article>
+      </div>
+
+      <!-- Travel -->
+      <div class="group" data-group="travel">
+        <article class="card">
+          <h3>San Francisco Album</h3>
+          <p>Golden Gate nights, city light trails, and coastal horizons—my favorite shots from SF.</p>
+          <a href="travel.html#sanfrancisco">See details →</a>
+        </article>
+        <article class="card">
+          <h3>India Album</h3>
+          <p>Moments and motion—from streets to skylines—captured across India.</p>
+          <a href="travel.html#india">See details →</a>
+        </article>
+      </div>
+
+      <!-- Projects (UPDATED: Real Estate + Ecosystem Modeling) -->
+      <div class="group" data-group="projects">
+        <article class="card">
+          <h3>Real Estate Analytics</h3>
+          <p>20+ years of CT transactions with geospatial parsing, filters, and a story-first UI.</p>
+          <a href="projects.html#real-estate-analytics">See details →</a>
+        </article>
+        <article class="card">
+          <h3>Ecosystem Modeling — Predator–Prey</h3>
+          <p>Rule-based fox–rabbit simulation with NumPy & Matplotlib animations, O(1) predator lookup, and vectorized grass regrowth.</p>
+          <a href="projects.html#ecosystem-modeling">See details →</a>
+        </article>
+      </div>
+
+      <!-- Experience -->
+      <div class="group" data-group="experience">
+        <article class="card">
+          <h3>Sports Data Analyst — Swim Standard</h3>
+          <p>Built an interactive coaching dashboard with real-time comparisons and ML power-law predictions—cutting ~4.5 hours of manual testing.</p>
+          <a href="experience.html#swim-standard">See details →</a>
+        </article>
+        <article class="card">
+          <h3>Finance Intern — RA & K (Bengaluru)</h3>
+          <p>Prepared financial reports, reconciled bank statements, managed 100+ journal entries, and supported KPI/variance analysis and voucher verification.</p>
+          <a href="experience.html#finance-intern">See details →</a>
+        </article>
+      </div>
+
+      <!-- Hobbies -->
+      <div class="group" data-group="hobbies">
+        <article class="card">
+          <h3>Swimming</h3>
+          <p>State-level IM gold medalist; swimming keeps my head clear and my routines disciplined.</p>
+          <a href="hobbies.html#swimming">See details →</a>
+        </article>
+        <article class="card">
+          <h3>Digital Art</h3>
+          <p>Tablet sketches with quiet, minimalist compositions—emphasizing light, form, contrast, and mood.</p>
+          <a href="hobbies.html#digital-art">See details →</a>
+        </article>
+      </div>
+
+      <!-- Contact -->
+      <div class="group" data-group="contact">
+        <article class="card">
+          <h3>Email</h3>
+          <p>Reach me quickly via email—happy to chat about projects, travel, or ideas.</p>
+          <a href="contact.html">See details →</a>
+        </article>
+        <article class="card">
+          <h3>LinkedIn & GitHub</h3>
+          <p>I keep both current with what I’m building and learning.</p>
+          <a href="contact.html">See details →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer>© <span id="year"></span> Rishi Urs</footer>
+
+  <script>
+    (function () {
+      const buttons = document.querySelectorAll('.selector .pill');
+      const groups  = document.querySelectorAll('.section-cards .group');
+      const activate = target => {
+        buttons.forEach(b => b.classList.toggle('active', b.dataset.target === target));
+        groups.forEach(g => g.classList.toggle('active', g.dataset.group === target));
+      };
+      buttons.forEach(btn => btn.addEventListener('click', () => activate(btn.dataset.target)));
+      const hash = (location.hash || '').replace('#','');
+      if (hash) {
+        const exists = [...buttons].some(b => b.dataset.target === hash);
+        if (exists) activate(hash);
+      }
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
+
+
+
