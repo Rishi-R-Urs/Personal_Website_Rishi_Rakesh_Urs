@@ -69,19 +69,30 @@
       line-height: 1.6;
     }
 
-    .github-link {
-      margin-top: 10px;
-      font-size: 0.97rem;
+    .buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
     }
 
-    .github-link a {
-      color: #2563eb;
-      text-decoration: none;
+    .btn {
+      display: inline-block;
+      font-family: "Inter", sans-serif;
       font-weight: 600;
+      font-size: 0.96rem;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid #cbd5e1;
+      background: #1f2937;
+      color: #fff;
+      text-decoration: none;
+      transition: background .2s ease, transform .15s ease;
     }
 
-    .github-link a:hover {
-      text-decoration: underline;
+    .btn:hover {
+      background: #111827;
+      transform: translateY(-1px);
     }
 
     footer {
@@ -117,21 +128,45 @@
 
   <main>
 
+    <!-- Marketing & Sentiment Feedback Program Specialist Experience -->
+    <div class="card">
+      <div class="meta">
+        <span>Northeastern University</span>
+        <span>Jan 2026 – May 2026</span>
+      </div>
+      <div class="role">Role: Marketing & Sentiment Feedback Program Specialist Co-Op</div>
+      <p><em>Boston, Massachusetts, United States</em></p>
+      <ul>
+        <li>Collaborated with the marketing team to iterate and optimize marketing campaigns, scaling feedback collection by 35% (2,222 → 3,000+ responses) and achieving the highest engagement cycle recorded.</li>
+        <li>Incentivised and engaged with 3,000+ students over time through weekly customer outreach initiatives, identifying firsthand systemic problems and actionable opportunities for improvement.</li>
+        <li>Proactively detected problems in feedback collection and redesigned survey structure, driving a 156% growth in follow-up capability (69 → 177 avg/month) and a complete reduction in missing data (23% → 0%).</li>
+        <li>Introduced a new avenue for feedback—social media—using optical character recognition and a student-centric NLP model trained on 925+ terms, analysing 400+ responses, enabling insights from a new student demographic.</li>
+        <li>Integrated AI into the sentiment feedback workflow, delivering an average of 20 reports per week and conducting trend analysis to provide actionable insights for non-technical stakeholders, enabling proactive decision making.</li>
+        <li>Implemented strategic student-facing initiatives within residential dining, contributing to a 9% CSAT growth, increased customer retention, and a 194.6% increase in Community Meal Plan sales (185 → 545).</li>
+        <li>Expanded the feedback program by collaborating with cross-functional teams and vendors, leading communication, survey design, and marketing strategy to generate insights for two previously untracked services.</li>
+        <li>Managed up to senior leadership by incorporating their feedback to develop presentations and deliver insights in Executive Business Reviews across 7 service portfolios, translating complex data into clear narratives.</li>
+      </ul>
+      <div class="buttons">
+        <a href="https://www.linkedin.com/in/rishi-rakesh-urs/details/experience/" class="btn" target="_blank">LinkedIn</a>
+        <a href="https://github.com/Rishi-R-Urs/NU_Feedback_Capture" class="btn" target="_blank">GitHub</a>
+      </div>
+    </div>
+
     <!-- Swim Standard Experience -->
     <div class="card">
       <div class="meta">
-        <span>Abhishek V. (Freelancing Swimming Coach/Mentor & Former National Swimmer)</span>
+        <span>Abhishek V. (Freelancing Swimming Coach & Former National Swimmer)</span>
         <span>July 2025 – August 2025</span>
       </div>
-      <div class="role">Role: Sports Data Analyst/Statistician and Assistant Coach</div>
+      <div class="role">Role: Sports Data Analyst/Statistician & Assistant Coach</div>
       <p><em>Bengaluru, India</em></p>
       <ul>
-        <li>Developed <strong>‘Swim Standard’</strong>, an interactive dashboard lauded as “life-changing” for simplifying training through real-time comparisons to national records and predictive analysis, saving 4.5 hours of manual lap-time testing.</li>
-        <li>Composed reusable CSVs and a comprehensive workout map by conducting primary and secondary research, facilitating efficient selection across a 290-exercise dataset and reducing trainer workload.</li>
-        <li>Utilized an ML-based power-law regression model to forecast lap times and pinpoint performance gaps, achieving &lt;3 seconds error between predicted and actual outcomes.</li>
+        <li>Developed <strong>'Swim Standard'</strong>, an interactive dashboard used to simplify training with real-time comparisons to national records and predictive analysis; saving 4.5 hours of manual lap time testing</li>
+        <li>Composed reusable CSVs and a workout map by conducting primary and secondary research, facilitating the efficient selection amongst a diverse 290 exercises, eliminating the need for trainers’ memory</li>
+        <li>Utilized ML power-law regression model to forecast lap times and pinpoint performance gaps, to reduce athletes’ energy lost in repetitive testing, with model achieving &lt;3 second error versus real world outcomes</li>
       </ul>
-      <div class="github-link">
-        GitHub: <a href="https://github.com/Rishi-R-Urs/Swim_Standard" target="_blank">Swim Standard Repository</a>
+      <div class="buttons">
+        <a href="https://github.com/Rishi-R-Urs/Swim_Standard" class="btn" target="_blank">GitHub</a>
       </div>
     </div>
 
@@ -144,24 +179,9 @@
       <div class="role">Role: Finance Intern</div>
       <p><em>Bengaluru, India</em></p>
       <ul>
-        <li>Exercised meticulous attention to detail in preparing 15+ financial reports and summaries, reconciling 25 bank statements, and recording 100+ journal entries using Excel and Tally to ensure accurate maintenance and analysis of accounts.</li>
-        <li>Assisted in financial analysis and evaluation by conducting variance analysis, voucher verification, and preparation of KPIs for 10+ small to medium enterprises to identify trends and communicate insights.</li>
-        <li>Communicated effectively across multiple teams to gain exposure to balance sheets, cash flow statements, profit and loss statements, and valuation techniques under senior guidance.</li>
-      </ul>
-    </div>
-
-    <!-- Global Scholars Program -->
-    <div class="card">
-      <div class="meta">
-        <span>Global Scholars Program — Northeastern University</span>
-        <span>Aug 2023 – May 2024</span>
-      </div>
-      <div class="role">Role: Global Scholar</div>
-      <p><em>London, UK · Oakland, CA · Boston, MA</em></p>
-      <ul>
-        <li>Selected for Northeastern’s <strong>Global Scholars Program</strong>, an accelerated and immersive academic experience across London, Oakland, and Boston campuses.</li>
-        <li>Developed strong adaptability and cross-cultural communication by engaging in global classrooms and community projects.</li>
-        <li>Gained international exposure through collaborative work and leadership in cross-disciplinary environments, blending data science and business perspectives.</li>
+        <li>Exercised meticulous attention to detail in preparing 15+ financial reports and summaries, reconciling 25 bank statements, and recording 100+ journal entries with Excel and Tally to accurately maintain and analyze accounts</li>
+        <li>Assisted in financial analysis and evaluation by conducting variance analysis, voucher verification and preparation of key performance indicators for 10+ small to medium enterprises to identify trends and communicate insights</li>
+        <li>Communicated concisely and effectively across multiple teams to acquire practical exposure with balance sheets, cash flow analysis, profit and loss statements and valuation techniques from senior managers and accountants</li>
       </ul>
     </div>
 
@@ -176,4 +196,3 @@
   </script>
 </body>
 </html>
-
