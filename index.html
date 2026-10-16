@@ -3,11 +3,47 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rishi Rakesh Urs — Home</title>
+  <script>addEventListener("pagereveal",function(e){var v=e.viewTransition;v&&["ready","finished","updateCallbackDone"].forEach(function(p){v[p]&&v[p].catch(function(){})})});</script>
+  <script>
+    /* decide before first paint: show splash once per session, never for reduced motion */
+    (function(d){try{if(sessionStorage.getItem("splashSeen")||matchMedia("(prefers-reduced-motion: reduce)").matches){d.classList.add("no-splash")}else{d.classList.add("splashing")}}catch(e){d.classList.add("no-splash")}setTimeout(function(){d.classList.remove("splashing")},4500)})(document.documentElement);
+  </script>
+  <title>Rishi Rakesh Urs — Data Science + FinTech</title>
+  <meta name="description" content="Portfolio of Rishi Rakesh Urs, Data Science and Business student at Northeastern (FinTech): machine learning projects, financial analytics and dashboards." />
+  <meta name="author" content="Rishi Rakesh Urs" />
+  <link rel="canonical" href="https://rishi-r-urs.github.io/Personal_Website_Rishi_Rakesh_Urs/" />
+  <meta name="theme-color" content="#F4F4F4" />
+  <meta name="color-scheme" content="light" />
+
+  <!-- Icons -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <!-- Link previews: Open Graph (LinkedIn, iMessage, Slack, WhatsApp...) -->
+  <meta property="og:type" content="profile" />
+  <meta property="profile:first_name" content="Rishi" />
+  <meta property="profile:last_name" content="Rakesh Urs" />
+  <meta property="og:site_name" content="Rishi Rakesh Urs" />
+  <meta property="og:title" content="Rishi Rakesh Urs — Data Science + FinTech" />
+  <meta property="og:description" content="Portfolio of Rishi Rakesh Urs, Data Science and Business student at Northeastern (FinTech): machine learning projects, financial analytics and dashboards." />
+  <meta property="og:url" content="https://rishi-r-urs.github.io/Personal_Website_Rishi_Rakesh_Urs/" />
+  <meta property="og:image" content="https://rishi-r-urs.github.io/Personal_Website_Rishi_Rakesh_Urs/img/og/og-home.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Dot-matrix card reading Rishi Rakesh Urs, Data Science + FinTech, Northeastern" />
+  <meta property="og:locale" content="en_US" />
+  <!-- X / Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rishi Rakesh Urs — Data Science + FinTech" />
+  <meta name="twitter:description" content="Portfolio of Rishi Rakesh Urs, Data Science and Business student at Northeastern (FinTech): machine learning projects, financial analytics and dashboards." />
+  <meta name="twitter:image" content="https://rishi-r-urs.github.io/Personal_Website_Rishi_Rakesh_Urs/img/og/og-home.png" />
+  <meta name="twitter:image:alt" content="Dot-matrix card reading Rishi Rakesh Urs, Data Science + FinTech, Northeastern" />
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Rishi Rakesh Urs", "url": "https://rishi-r-urs.github.io/Personal_Website_Rishi_Rakesh_Urs/", "image": "https://rishi-r-urs.github.io/Personal_Website_Rishi_Rakesh_Urs/img/full/Self_Photo_Website.webp", "jobTitle": "Data Science and Business Administration Student", "alumniOf": {"@type": "CollegeOrUniversity", "name": "Northeastern University"}, "knowsAbout": ["Data Science", "FinTech", "Machine Learning", "Financial Analytics", "Data Visualization"], "sameAs": ["https://www.linkedin.com/in/rishi-rakesh-urs/", "https://github.com/Rishi-R-Urs"]}</script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@400..900&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css" />
   <script defer src="script.js"></script>
@@ -131,9 +167,21 @@
       .card p { font-size: 1rem; }
     }
   </style>
+  <link rel="stylesheet" href="motion.css" />
+  <link rel="stylesheet" href="theme-nothing.css" />
+  <script defer src="motion.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrambleTextPlugin.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/TextPlugin.min.js"></script>
+  <script defer src="text-fx.js"></script>
 </head>
 
 <body>
+  <div id="splash" aria-hidden="true">
+    <div class="splash-count">000</div>
+    <div class="splash-bar"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="splash-label">Rishi Rakesh Urs — Portfolio</div>
+  </div>
   <header class="site-header">
     <div class="topbar">
       <a class="brand" href="index.html">Rishi&nbsp;Rakesh&nbsp;Urs</a>
@@ -154,7 +202,15 @@
 
   <!-- Hero -->
   <section class="hero-photo">
-    <img src="Self_Photo_Website.jpg" alt="Rishi Rakesh Urs portrait" />
+    <img data-parallax src="img/full/Self_Photo_Website.webp" fetchpriority="high" alt="Rishi Rakesh Urs portrait" />
+    <div class="hero-overlay">
+      <h1 class="hero-name" data-fx="reveal">Rishi Rakesh Urs</h1>
+      <p class="hero-tag">Data Science + FinTech @ Northeastern<br><span class="rotator" data-fx="rotate" data-words='["turning feedback into decisions","building ML dashboards","chasing sunsets across 9 cities"]'>turning feedback into decisions</span></p>
+      <div class="hero-cta">
+        <a class="btn" href="projects.html">See my work</a>
+        <a class="btn ghost" href="contact.html">Get in touch</a>
+      </div>
+    </div>
   </section>
 
   <!-- Selector Section -->
