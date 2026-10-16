@@ -100,6 +100,84 @@
     });
   };
 
+  // ---------- Home hero: face-aware placement on a white canvas ----------
+  // Find the person in the photo by scanning for non-white pixels, then
+  // place the photo so the subject sits left of centre and the text gets
+  // the free white space to its right. Falls back to a stacked layout.
+  const hero = document.querySelector('.hero-photo');
+  const overlay = hero?.querySelector('.hero-overlay');
+  const portrait = hero?.querySelector('img');
+  let subject = { x0: 0.33, x1: 0.64 };           // fallback, in image fractions
+
+  const findSubject = img => {
+    try {
+      const w = 240, h = Math.round(240 * img.naturalHeight / img.naturalWidth);
+      const c = document.createElement('canvas'); c.width = w; c.height = h;
+      const g = c.getContext('2d', { willReadFrequently: true });
+      g.drawImage(img, 0, 0, w, h);
+      const d = g.getImageData(0, 0, w, h).data;
+      const ink = new Array(w).fill(0);
+      for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+        const i = (y * w + x) * 4;
+        if (d[i + 3] < 128) continue;              // undecoded/transparent: not subject
+        const lum = 0.2126 * d[i] + 0.7152 * d[i + 1] + 0.0722 * d[i + 2];
+        if (lum < 225) ink[x]++;
+      }
+      const busy = ink.map(n => n / h > 0.06);    // a column is "subject" if >6% non-white
+      // longest continuous run of busy columns = the person (ignores thin
+      // border lines or specks near the photo's edges)
+      let best = [-1, -1], start = -1;
+      for (let x = 0; x <= w; x++) {
+        if (x < w && busy[x]) { if (start < 0) start = x; continue; }
+        if (start >= 0 && x - start > best[1] - best[0]) best = [start, x];
+        start = -1;
+      }
+      const span = (best[1] - best[0]) / w;
+      if (best[0] >= 0 && span > 0.08 && span < 0.9) subject = { x0: best[0] / w, x1: best[1] / w };
+    } catch (e) { /* tainted canvas or decode issue: keep fallback */ }
+  };
+
+  const layoutHero = () => {
+    if (!hero || !portrait?.naturalWidth) return;
+    const W = hero.clientWidth;
+    const H = Math.round(Math.min(640, Math.max(440, innerHeight * 0.64)));
+    const imgW = H * portrait.naturalWidth / portrait.naturalHeight;
+    const subjW = (subject.x1 - subject.x0) * imgW;
+    const margin = Math.max(24, Math.min(96, W * 0.05));
+    const gap = Math.max(32, W * 0.03);
+    const textW = Math.min(620, Math.max(400, W * 0.38));
+    // ideal: subject centred at 30% of the width; slide left if the text needs room
+    let subjLeft = W * 0.30 - subjW / 2;
+    subjLeft = Math.min(subjLeft, W - margin - textW - gap - subjW);
+    subjLeft = Math.max(subjLeft, margin * 0.5);
+    const fits = subjLeft + subjW + gap + textW <= W - margin + 1;
+    hero.classList.toggle('hero-canvas', fits);
+    if (!fits) {
+      hero.style.height = portrait.style.cssText = overlay.style.cssText = '';
+      // stacked: the photo is cropped by object-fit:cover, so pick the crop
+      // that puts the subject's centre in the middle of the frame
+      const boxW = portrait.clientWidth, boxH = portrait.clientHeight;
+      const shownW = Math.max(boxW, boxH * portrait.naturalWidth / portrait.naturalHeight);
+      const c = (subject.x0 + subject.x1) / 2;
+      const p = shownW > boxW ? (c * shownW - boxW / 2) / (shownW - boxW) : 0.5;
+      portrait.style.setProperty('object-position', `${(Math.min(1, Math.max(0, p)) * 100).toFixed(1)}% 40%`, 'important');
+      return;
+    }
+    hero.style.height = H + 'px';
+    portrait.style.width = imgW + 'px';
+    portrait.style.height = H + 'px';
+    portrait.style.left = (subjLeft - subject.x0 * imgW) + 'px';
+    overlay.style.setProperty('--ov-left', (subjLeft + subjW + gap) + 'px');
+    overlay.style.setProperty('--ov-right', margin + 'px');
+  };
+  if (portrait) {
+    // decode() resolves once pixels are actually readable (complete != decoded)
+    const ready = () => { findSubject(portrait); layoutHero(); };
+    const whenLoaded = portrait.complete ? Promise.resolve() : new Promise(r => portrait.addEventListener('load', r, { once: true }));
+    whenLoaded.then(() => portrait.decode?.()).then(ready, ready);
+    addEventListener('resize', () => requestAnimationFrame(layoutHero));
+  }
+
   // ---------- Experience timeline line draws with scroll ----------
   const timeline = document.querySelector('.timeline');
   const onScrollTimeline = () => {
@@ -158,11 +236,65 @@
     if (b.querySelector('.btn-label')) return;
     const text = b.textContent.replace(/[→↗]\s*$/, '').trim().replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
     const ext = b.target === '_blank';
-    const arrow = ext ? '↗' : '→';
+    const arrow = b.dataset.icon || (ext ? '↗' : '→');
     b.innerHTML = `<span class="btn-led" aria-hidden="true"></span><span class="btn-label">${text}</span>` +
       `<span class="btn-arrow${ext ? ' ext' : ''}" aria-hidden="true"><i>${arrow}</i><i>${arrow}</i></span>`;
     if (ext && !b.rel) b.rel = 'noopener';
   });
+
+  // Copy keys: copy the value, confirm in the label, then restore
+  document.querySelectorAll('.btn[data-copy]').forEach(b => {
+    const l = b.querySelector('.btn-label');
+    const live = document.createElement('span');
+    live.className = 'sr-only'; live.setAttribute('aria-live', 'polite');
+    b.after(live);
+    b.addEventListener('click', async () => {
+      let ok = false;
+      try { await navigator.clipboard.writeText(b.dataset.copy); ok = true; } catch (e) {}
+      l.textContent = ok ? 'Copied' : 'Press ⌘C';
+      if (l.dataset.text) l.dataset.text = l.textContent;
+      live.textContent = ok ? `${b.dataset.copy} copied to clipboard` : '';
+      b.classList.add('done');
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = 'Copy'; if (l.dataset.text) l.dataset.text = 'Copy'; b.classList.remove('done'); }, 1800);
+    });
+  });
+
+  // ---------- Home selector: numbered keys with an LED for the active group ----------
+  document.querySelectorAll('.selector .pill').forEach((p, i) => {
+    const text = p.textContent.trim();
+    p.innerHTML = `<span class="pill-idx" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>` +
+      `<span class="pill-label">${text}</span><span class="pill-led" aria-hidden="true"></span>`;
+    p.setAttribute('aria-pressed', p.classList.contains('active'));
+    p.addEventListener('click', () => requestAnimationFrame(() =>
+      document.querySelectorAll('.selector .pill').forEach(q => q.setAttribute('aria-pressed', q.classList.contains('active')))));
+  });
+
+  // ---------- Travel city keys: photo count + flash the heading you jump to ----------
+  document.querySelectorAll('.jump a').forEach(a => {
+    const target = document.querySelector(a.getAttribute('href'));
+    const n = target?.nextElementSibling?.querySelectorAll('.tile').length || 0;
+    const name = a.textContent.trim();
+    a.innerHTML = `<span class="jump-led" aria-hidden="true"></span><span class="jump-label">${name}</span>` +
+      `<span class="jump-count" aria-label="${n} photos">${String(n).padStart(2, '0')}</span>`;
+    a.addEventListener('click', () => {
+      if (!target) return;
+      target.classList.remove('flash'); void target.offsetWidth; target.classList.add('flash');
+    });
+  });
+
+  // ---------- Mobile menu key: 3x3 dot glyph that morphs into an X ----------
+  const navToggle = document.querySelector('.nav-toggle');
+  if (navToggle) {
+    navToggle.innerHTML = '<span class="dots" aria-hidden="true">' + '<i></i>'.repeat(9) + '</span>';
+    navToggle.setAttribute('aria-expanded', 'false');
+    const navEl = document.querySelector('.site-nav');
+    navToggle.addEventListener('click', () => requestAnimationFrame(() => {
+      const open = navEl?.classList.contains('open');
+      navToggle.setAttribute('aria-expanded', String(!!open));
+      navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }));
+  }
 
   // ---------- "→" arrows get their own span so they can nudge ----------
   document.querySelectorAll('a').forEach(a => {

@@ -62,6 +62,12 @@ window.addEventListener('DOMContentLoaded', () => {
         b.addEventListener('mouseenter', () => { gsap.killTweensOf(l); decode(l, 0.4); });
       });
 
+      // Selector pills and city keys decode on hover too
+      document.querySelectorAll('.pill-label, .jump-label').forEach(l => {
+        label(l);
+        l.closest('button, a').addEventListener('mouseenter', () => { gsap.killTweensOf(l); decode(l, 0.35); });
+      });
+
       // (e) Dot-matrix footer links glitch on hover
       document.querySelectorAll('.foot-nav a').forEach(a => {
         label(a);
