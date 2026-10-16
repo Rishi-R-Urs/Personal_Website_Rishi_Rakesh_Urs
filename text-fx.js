@@ -54,7 +54,15 @@ window.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.eyebrow, .kicker, .chip-label').forEach(el => { label(el); io.observe(el); });
       document.querySelectorAll('.page-title, .hero h1').forEach(el => io.observe(el));
 
-      // (d) Dot-matrix footer links glitch on hover
+      // (d) Button labels decode as the tiger fill sweeps in
+      document.querySelectorAll('.btn').forEach(b => {
+        const l = b.querySelector('.btn-label');
+        if (!l) return;
+        label(l);
+        b.addEventListener('mouseenter', () => { gsap.killTweensOf(l); decode(l, 0.4); });
+      });
+
+      // (e) Dot-matrix footer links glitch on hover
       document.querySelectorAll('.foot-nav a').forEach(a => {
         label(a);
         a.addEventListener('mouseenter', () => { gsap.killTweensOf(a); decode(a, 0.35); });

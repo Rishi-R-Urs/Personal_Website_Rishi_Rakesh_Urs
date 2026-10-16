@@ -123,7 +123,7 @@
   }
 
   const revealTargets = document.querySelectorAll(
-    '.band .card, main .card, .project, .hobby, .contact-box, .city, .about-body > *'
+    '.band .card, main .card, .project, .hobby, .contact-box, .tile, .city, .about-body > *'
   );
   if (!reduce && 'IntersectionObserver' in window) {
     const io = new IntersectionObserver(entries => {
@@ -152,6 +152,17 @@
     s.style.setProperty('--mx', `${e.clientX - r.left}px`);
     s.style.setProperty('--my', `${e.clientY - r.top}px`);
   }, { passive: true });
+
+  // ---------- Buttons become "hardware keys": LED · label · arrow cell ----------
+  document.querySelectorAll('.btn').forEach(b => {
+    if (b.querySelector('.btn-label')) return;
+    const text = b.textContent.replace(/[→↗]\s*$/, '').trim().replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+    const ext = b.target === '_blank';
+    const arrow = ext ? '↗' : '→';
+    b.innerHTML = `<span class="btn-led" aria-hidden="true"></span><span class="btn-label">${text}</span>` +
+      `<span class="btn-arrow${ext ? ' ext' : ''}" aria-hidden="true"><i>${arrow}</i><i>${arrow}</i></span>`;
+    if (ext && !b.rel) b.rel = 'noopener';
+  });
 
   // ---------- "→" arrows get their own span so they can nudge ----------
   document.querySelectorAll('a').forEach(a => {
@@ -207,109 +218,6 @@
     counters.forEach(c => cio.observe(c));
   }
 
-  // ---------- Travel carousels ----------
-  document.querySelectorAll('.album .gallery').forEach(track => {
-    const slides = [...track.querySelectorAll('.tile')];
-    const wrap = document.createElement('div');
-    wrap.className = 'carousel' + (slides.length < 2 ? ' single' : '');
-    track.before(wrap); wrap.appendChild(track);
-    track.tabIndex = 0;
-    track.setAttribute('role', 'region');
-    track.setAttribute('aria-roledescription', 'carousel');
-    track.setAttribute('aria-label', (track.previousElementSibling?.textContent || wrap.previousElementSibling?.textContent || 'Photos').trim());
-    if (slides.length < 2) { slides[0]?.classList.add('is-active'); return; }
-
-    const pad = n => String(n).padStart(2, '0');
-    const ui = document.createElement('div');
-    ui.className = 'carousel-ui';
-    ui.innerHTML = `
-      <span class="count" aria-live="polite">01 / ${pad(slides.length)}</span>
-      <span class="dots">${slides.map((_, i) => `<button aria-label="Photo ${i + 1}"></button>`).join('')}</span>
-      <span class="autoplay" aria-hidden="true"><i></i></span>
-      <span class="arrows"><button class="prev" aria-label="Previous photo">←</button><button class="next" aria-label="Next photo">→</button></span>`;
-    wrap.appendChild(ui);
-    const dots = [...ui.querySelectorAll('.dots button')];
-    const count = ui.querySelector('.count');
-    const prev = ui.querySelector('.prev'), next = ui.querySelector('.next');
-    let active = 0;
-
-    const go = i => {
-      i = Math.max(0, Math.min(slides.length - 1, i));
-      track.scrollTo({ left: slides[i].offsetLeft - slides[0].offsetLeft, behavior: reduce ? 'auto' : 'smooth' });
-    };
-    const setActive = i => {
-      active = i;
-      slides.forEach((s, k) => s.classList.toggle('is-active', k === i));
-      dots.forEach((d, k) => d.setAttribute('aria-current', k === i ? 'true' : 'false'));
-      count.textContent = `${pad(i + 1)} / ${pad(slides.length)}`;
-      const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
-      prev.disabled = i === 0;
-      next.disabled = atEnd && i === slides.length - 1;
-    };
-    // the slide whose left edge is nearest the track's left edge is "active"
-    const sync = () => {
-      const x = track.scrollLeft + slides[0].offsetLeft;
-      let best = 0;
-      slides.forEach((s, k) => { if (Math.abs(s.offsetLeft - x) < Math.abs(slides[best].offsetLeft - x)) best = k; });
-      if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 4) best = slides.length - 1;
-      if (best !== active || !slides[best].classList.contains('is-active')) setActive(best);
-    };
-    let raf = 0;
-    track.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(sync); }, { passive: true });
-    prev.onclick = () => { go(active - 1); restart(); };
-    next.onclick = () => { go(active + 1); restart(); };
-    dots.forEach((d, k) => d.onclick = () => { go(k); restart(); });
-    track.addEventListener('keydown', e => {
-      if (e.key === 'ArrowRight') { e.preventDefault(); go(active + 1); restart(); }
-      if (e.key === 'ArrowLeft')  { e.preventDefault(); go(active - 1); restart(); }
-    });
-
-    // Mouse drag to scroll (touch already scrolls natively)
-    let down = null;
-    track.addEventListener('pointerdown', e => {
-      if (e.pointerType !== 'mouse' || e.button !== 0) return;
-      down = { x: e.clientX, left: track.scrollLeft, moved: false };
-    });
-    addEventListener('pointermove', e => {
-      if (!down) return;
-      const dx = e.clientX - down.x;
-      if (!down.moved && Math.abs(dx) > 6) { down.moved = true; track.classList.add('dragging'); }
-      if (down.moved) track.scrollLeft = down.left - dx;
-    });
-    addEventListener('pointerup', () => {
-      if (!down) return;
-      if (down.moved) {
-        track.classList.remove('dragging');
-        track.dataset.justDragged = '1';
-        setTimeout(() => delete track.dataset.justDragged, 50);
-        sync(); go(active);
-      }
-      down = null; restart();
-    });
-    track.addEventListener('dragstart', e => e.preventDefault());
-
-    // Autoplay: only while on screen, not hovered/focused, motion allowed
-    const DELAY = 4500;
-    let visible = false, paused = false, timer = 0;
-    wrap.style.setProperty('--autoplay', DELAY + 'ms');
-    function restart() {
-      clearTimeout(timer);
-      wrap.classList.remove('playing');
-      if (reduce || !visible || paused) return;
-      void wrap.offsetWidth; // restart the progress-bar animation
-      wrap.classList.add('playing');
-      timer = setTimeout(() => { go(active + 1 >= slides.length ? 0 : active + 1); restart(); }, DELAY);
-    }
-    wrap.addEventListener('mouseenter', () => { paused = true; restart(); });
-    wrap.addEventListener('mouseleave', () => { paused = false; restart(); });
-    wrap.addEventListener('focusin', () => { paused = true; restart(); });
-    wrap.addEventListener('focusout', () => { paused = false; restart(); });
-    new IntersectionObserver(([e]) => { visible = e.intersectionRatio > 0.6; restart(); }, { threshold: [0, 0.6, 1] }).observe(wrap);
-    document.addEventListener('visibilitychange', () => { visible = visible && !document.hidden; restart(); });
-
-    setActive(0);
-  });
-
   // ---------- Travel lightbox (FLIP zoom from the clicked tile) ----------
   const album = document.querySelector('.album');
   if (album) {
@@ -364,7 +272,6 @@
 
     album.addEventListener('click', e => {
       const t = e.target.closest('.tile');
-      if (t && t.closest('.gallery')?.dataset.justDragged) { e.preventDefault(); return; } // end of a drag, not a click
       if (!t || e.metaKey || e.ctrlKey) return; // cmd/ctrl-click still opens in a tab
       e.preventDefault();
       open(tiles.indexOf(t));

@@ -148,22 +148,6 @@ h1, h2, h3, .page-title, .hero h1, .city, .facts-title{
 }
 @keyframes blink{ 50%{ opacity:0; } }
 
-/* ---------- Buttons ---------- */
-.btn{
-  background:var(--n-black) !important; color:var(--n-white) !important;
-  border:1px solid var(--n-black) !important; border-radius:var(--r-md) !important;
-  font-size:12px !important; font-weight:400 !important;
-  padding:12px 16px !important; box-shadow:none !important;
-  display:inline-flex !important; align-items:center; gap:10px;
-  transition:opacity var(--t-base) var(--ease), background-color var(--t-base) var(--ease) !important;
-  transform:none !important;
-}
-.btn::after{ content:"→"; transition:transform var(--t-base) var(--ease); }
-.btn[target="_blank"]::after{ content:"↗"; }
-.btn:hover{ opacity:.8; }
-.btn:hover::after{ transform:translateX(3px); }
-.btn.ghost{ background:var(--n-white) !important; color:var(--n-black) !important; border-color:var(--n-grey-300) !important; }
-
 /* ---------- Home selector ---------- */
 .selector{ gap:var(--gap) !important; }
 .selector .pill{
@@ -188,7 +172,7 @@ h1, h2, h3, .page-title, .hero h1, .city, .facts-title{
 }
 .section-cards{ gap:var(--gap) !important; }
 .card a:not(.btn), .text-link{ font-size:12px !important; font-weight:400 !important; color:var(--n-black) !important; text-decoration:none !important; }
-.card a:hover{ opacity:.7; }
+.card a:not(.btn):hover{ opacity:.7; }
 .card p, .project p, .hobby p{ color:var(--n-grey-800) !important; }
 .date, .assoc{ font-size:12px !important; font-style:normal !important; color:var(--n-grey-600) !important; margin:0 0 4px !important; }
 
@@ -301,55 +285,31 @@ footer, .site-footer{
 html.splash-done .hero-photo img, html.no-splash .hero-photo img{ filter:grayscale(0) !important; }
 
 /* ==========================================================
-   Travel carousels
+   Travel: masonry columns, every photo at its natural aspect ratio
    ========================================================== */
-.carousel{ position:relative; margin-bottom:12px; }
-.carousel .gallery{
-  display:flex !important; gap:var(--gap) !important;
-  overflow-x:auto; overscroll-behavior-x:contain;
-  scroll-snap-type:x mandatory; scroll-behavior:smooth;
-  scrollbar-width:none; padding:4px 0 2px; margin:0 !important;
-  cursor:grab; outline:none;
+.album .gallery{
+  display:block !important;
+  columns:3 280px; column-gap:var(--gap);
+  margin-bottom:8px !important;
 }
-.carousel .gallery::-webkit-scrollbar{ display:none; }
-.carousel .gallery.dragging{ cursor:grabbing; scroll-snap-type:none; scroll-behavior:auto; }
-.carousel .gallery.dragging .tile{ pointer-events:none; }
-.carousel .tile{
-  flex:0 0 clamp(240px, 46%, 560px);
-  scroll-snap-align:start;
-  transform:scale(.94) !important; opacity:.6;
-  transition:transform .6s var(--ease), opacity .6s var(--ease), border-color var(--t-base) var(--ease) !important;
+.album .tile{
+  break-inside:avoid; margin:0 0 var(--gap) !important;
+  display:block; overflow:hidden;
 }
-.carousel .tile img{ height:clamp(220px, 32vw, 380px) !important; filter:grayscale(1) !important; transition:filter .6s var(--ease), transform .6s var(--ease) !important; }
-.carousel .tile.is-active{ transform:none !important; opacity:1; }
-.carousel .tile.is-active img{ filter:grayscale(0) !important; }
-.carousel .tile:hover img{ filter:grayscale(0) !important; }
-.carousel .tile.is-active .caption{ color:var(--g-1000) !important; }
-.carousel .tile.is-active .caption::before{ content:"● "; color:var(--tiger); }
-.carousel.single .tile{ flex-basis:min(560px, 100%); transform:none !important; opacity:1; }
-.carousel.single .carousel-ui{ display:none; }
-
-.carousel-ui{ display:flex; align-items:center; gap:14px; margin-top:12px; font:400 12px/1 var(--f-mono); text-transform:uppercase; color:var(--g-600); }
-.carousel-ui .count{ min-width:64px; color:var(--g-1000); font-variant-numeric:tabular-nums; }
-.carousel-ui .dots{ display:flex; gap:6px; flex:1; align-items:center; }
-.carousel-ui .dots button{
-  width:6px; height:6px; padding:0; border:0; border-radius:3px; cursor:pointer;
-  background:var(--g-300); transition:width .4s var(--ease), background-color .4s var(--ease);
+.album .tile img{
+  height:auto !important; width:100%; aspect-ratio:auto;
+  object-fit:contain !important;
+  filter:grayscale(1) !important;
+  transition:filter .6s var(--ease), transform .8s var(--ease) !important;
 }
-.carousel-ui .dots button[aria-current="true"]{ width:22px; background:var(--tiger); box-shadow:var(--tiger-glow); }
-.carousel-ui .arrows{ display:flex; gap:6px; }
-.carousel-ui .arrows button{
-  width:38px; height:38px; border-radius:var(--r-md); cursor:pointer;
-  border:1px solid var(--g-200); background:var(--g-0); color:var(--g-1000);
-  font:400 14px/1 var(--f-mono); transition:background-color var(--t-base) var(--ease), color var(--t-base) var(--ease);
-}
-.carousel-ui .arrows button:hover:not(:disabled){ background:var(--g-1000); color:var(--g-0); }
-.carousel-ui .arrows button:disabled{ opacity:.35; cursor:default; }
-.carousel-ui .autoplay{ width:42px; height:2px; background:var(--g-200); position:relative; overflow:hidden; border-radius:1px; }
-.carousel-ui .autoplay i{ position:absolute; inset:0; background:var(--tiger); transform:scaleX(0); transform-origin:left; }
-.carousel.playing .carousel-ui .autoplay i{ animation:autoplayBar var(--autoplay,4.5s) linear forwards; }
-@keyframes autoplayBar{ to{ transform:scaleX(1); } }
-@media (max-width:640px){ .carousel .tile{ flex-basis:84%; } }
+.album .tile:hover img, .album .tile:focus-visible img{ filter:grayscale(0) !important; transform:scale(1.03) !important; }
+.album .tile .caption{ display:flex; justify-content:space-between; align-items:center; }
+.album .tile .caption::after{ content:"↗"; opacity:0; transform:translate(-4px,4px); transition:opacity .25s var(--ease), transform .25s var(--ease); }
+.album .tile:hover .caption::after{ opacity:1; transform:none; }
+/* one photo: don't stretch it across the page */
+.album .gallery:has(> .tile:only-child){ columns:1; max-width:560px; }
+/* two photos: two columns, not three */
+.album .gallery:has(> .tile:nth-child(2):last-child){ columns:2 280px; }
 
 /* ==========================================================
    Splash loader (home only)
@@ -420,7 +380,7 @@ html.splashing{ overflow:hidden; }
    Surface hover: dot-grid spotlight that follows the cursor
    (--mx/--my set by motion.js), plus a hairline that darkens
    ========================================================== */
-.card, .project, .hobby-body, .contact-box, .stat, .carousel-ui .arrows button{ position:relative; isolation:isolate; }
+.card, .project, .hobby-body, .contact-box, .stat{ position:relative; isolation:isolate; }
 .card::after, .project::after, .hobby-body::after, .contact-box::after, .stat::after{
   content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; border-radius:inherit;
   background:radial-gradient(var(--g-300) 1px, transparent 1.4px) 0 0/9px 9px;
@@ -440,4 +400,98 @@ html.splashing{ overflow:hidden; }
 .chips li{ isolation:isolate; }
 .chips li:hover{ background:var(--g-50) !important; color:var(--g-0) !important; }
 .chips li:hover::before{ transform:none; }
-.carousel .tile.is-active:hover .caption{ color:var(--g-0) !important; }
+
+/* ==========================================================
+   Home hero: photo and text never share space.
+   Stacked below 1100px; side-by-side columns above.
+   ========================================================== */
+.hero-photo{ display:grid !important; grid-template-columns:1fr; background:var(--g-0); }
+.hero-photo img{ grid-column:1; grid-row:1; }
+.hero-overlay{
+  position:relative !important; inset:auto !important;
+  grid-row:2; padding:32px 20px 12px !important;
+  align-items:center !important; text-align:center; background:var(--g-50) !important;
+}
+.hero-cta{ justify-content:center; }
+@media (min-width:1100px){
+  .hero-photo{ grid-template-columns:minmax(0,1.1fr) minmax(460px,.9fr); }
+  .hero-photo img{ height:clamp(440px, 60vh, 620px) !important; max-height:none !important; object-position:50% 38% !important; }
+  .hero-overlay{
+    grid-column:2; grid-row:1; z-index:1;
+    align-items:flex-start !important; text-align:left;
+    padding:0 clamp(32px, 5vw, 88px) 0 clamp(32px, 4vw, 64px) !important;
+    border-left:1px solid var(--g-200);
+    background-image:radial-gradient(var(--g-200) 1px, transparent 1.2px) !important; background-size:14px 14px !important;
+  }
+  .hero-cta{ justify-content:flex-start; }
+  .hero-name{ font-size:clamp(3rem, 4.6vw, 4.6rem) !important; }
+}
+
+/* ==========================================================
+   Projects / Experience spacing
+   ========================================================== */
+ul.chips, .project ul.chips, .hobby ul.chips, .timeline ul.chips{ padding-left:0 !important; margin-left:0 !important; }
+.project .buttons, .timeline .buttons{ margin-top:28px !important; padding-top:20px; border-top:1px dashed var(--g-200); }
+.project{ padding:32px 34px 30px !important; margin-bottom:var(--gap) !important; }
+.project h2{ margin-bottom:12px !important; }
+
+/* ==========================================================
+   Buttons: hardware keys
+   [LED] LABEL | arrow-cell
+   Hover: tiger fill sweeps in, LED goes dark, arrow exits and
+   a new one slides in, label decodes (text-fx.js).
+   ========================================================== */
+.btn{
+  position:relative; isolation:isolate; overflow:hidden;
+  display:inline-flex !important; align-items:stretch !important; gap:0 !important;
+  height:46px; padding:0 !important;
+  background:var(--g-1000) !important; color:var(--g-0) !important;
+  border:1px solid var(--g-1000) !important; border-radius:var(--r-md) !important;
+  font:400 12px/1 var(--f-mono) !important; text-transform:uppercase; letter-spacing:-.02em;
+  text-decoration:none !important; box-shadow:none !important; opacity:1 !important;
+  transition:color .3s var(--ease), border-color .3s var(--ease), transform .15s var(--ease) !important;
+  transform:none !important; cursor:pointer;
+}
+.btn::after{ content:none !important; }
+.btn::before{
+  content:""; position:absolute; inset:0; z-index:-1;
+  background:var(--tiger);
+  transform:translateX(-101%);
+  transition:transform .45s var(--ease);
+}
+.btn-led{
+  align-self:center; flex:none; width:6px; height:6px; margin:0 10px 0 14px; border-radius:50%;
+  background:var(--g-700); transition:background-color .3s var(--ease), box-shadow .3s var(--ease);
+}
+.btn-label{ align-self:center; padding-right:16px; white-space:nowrap; }
+.btn-arrow{
+  position:relative; display:grid; place-items:center; flex:none;
+  width:44px; border-left:1px solid rgba(255,255,255,.2); overflow:hidden;
+  transition:border-color .3s var(--ease);
+}
+.btn-arrow i{ grid-area:1/1; font-style:normal; font-size:14px; transition:transform .45s var(--ease); }
+.btn-arrow i:last-child{ transform:translate(-34px, 0); }
+.btn-arrow.ext i:last-child{ transform:translate(-30px, 30px); }
+
+.btn:hover, .btn:focus-visible{ color:var(--g-1000) !important; border-color:var(--tiger) !important; }
+.btn:hover::before, .btn:focus-visible::before{ transform:none; }
+.btn:hover .btn-led, .btn:focus-visible .btn-led{ background:var(--g-1000); }
+.btn:hover .btn-arrow, .btn:focus-visible .btn-arrow{ border-color:rgba(0,0,0,.25); }
+.btn:hover .btn-arrow i:first-child{ transform:translate(34px, 0); }
+.btn:hover .btn-arrow.ext i:first-child{ transform:translate(30px, -30px); }
+.btn:hover .btn-arrow i:last-child{ transform:none; }
+.btn:active{ transform:scale(.97) !important; }
+.btn:focus-visible{ outline:2px solid var(--tiger); outline-offset:3px; }
+/* idle "standby" blink so the LED reads as a light, not a bullet */
+.btn:not(:hover) .btn-led{ animation:standby 3.2s var(--ease) infinite; }
+@keyframes standby{ 0%,86%,100%{ background:var(--g-700); } 92%{ background:var(--tiger); box-shadow:var(--tiger-glow); } }
+
+.btn.ghost{ background:var(--g-0) !important; color:var(--g-1000) !important; border-color:var(--g-200) !important; }
+.btn.ghost::before{ background:var(--g-1000); }
+.btn.ghost .btn-led{ background:var(--g-300); }
+.btn.ghost .btn-arrow{ border-left-color:var(--g-200); }
+.btn.ghost:hover, .btn.ghost:focus-visible{ color:var(--g-0) !important; border-color:var(--g-1000) !important; }
+.btn.ghost:hover .btn-led{ background:var(--tiger); box-shadow:var(--tiger-glow); }
+.btn.ghost:hover .btn-arrow{ border-color:rgba(255,255,255,.2); }
+.buttons{ gap:var(--gap) !important; }
+@media (prefers-reduced-motion: reduce){ .btn .btn-led{ animation:none !important; } }
