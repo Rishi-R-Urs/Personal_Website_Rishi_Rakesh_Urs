@@ -3,13 +3,43 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>addEventListener("pagereveal",function(e){var v=e.viewTransition;v&&["ready","finished","updateCallbackDone"].forEach(function(p){v[p]&&v[p].catch(function(){})})});</script>
   <title>Hobbies — Rishi Rakesh Urs</title>
+  <meta name="description" content="Swimming, go-karting, horse riding, theatre and travel: what Rishi Rakesh Urs does away from the data." />
+  <meta name="author" content="Rishi Rakesh Urs" />
+  <link rel="canonical" href="https://rishi-r-urs.github.io/Personal_Website_Rishi_Rakesh_Urs/hobbies.html" />
+  <meta name="theme-color" content="#F4F4F4" />
+  <meta name="color-scheme" content="light" />
+
+  <!-- Icons -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <!-- Link previews: Open Graph (LinkedIn, iMessage, Slack, WhatsApp...) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Rishi Rakesh Urs" />
+  <meta property="og:title" content="Hobbies — Rishi Rakesh Urs" />
+  <meta property="og:description" content="Swimming, go-karting, horse riding, theatre and travel: what Rishi Rakesh Urs does away from the data." />
+  <meta property="og:url" content="https://rishi-r-urs.github.io/Personal_Website_Rishi_Rakesh_Urs/hobbies.html" />
+  <meta property="og:image" content="https://rishi-r-urs.github.io/Personal_Website_Rishi_Rakesh_Urs/img/og/og-hobbies.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Dot-matrix card reading Hobbies, Rishi Rakesh Urs" />
+  <meta property="og:locale" content="en_US" />
+  <!-- X / Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hobbies — Rishi Rakesh Urs" />
+  <meta name="twitter:description" content="Swimming, go-karting, horse riding, theatre and travel: what Rishi Rakesh Urs does away from the data." />
+  <meta name="twitter:image" content="https://rishi-r-urs.github.io/Personal_Website_Rishi_Rakesh_Urs/img/og/og-hobbies.png" />
+  <meta name="twitter:image:alt" content="Dot-matrix card reading Hobbies, Rishi Rakesh Urs" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@400..900&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
 
   <style>
     .hero {
@@ -79,6 +109,14 @@
       font-size: 0.95rem;
     }
   </style>
+  <link rel="stylesheet" href="motion.css" />
+  <link rel="stylesheet" href="theme-nothing.css" />
+  <script defer src="motion.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrambleTextPlugin.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/TextPlugin.min.js"></script>
+  <script defer src="text-fx.js"></script>
+  <script defer src="glyphs.js"></script>
 </head>
 
 <body>
@@ -102,28 +140,38 @@
     <h1>Hobbies</h1>
   </section>
 
-  <main>
+  <main class="hobby-grid">
 
     <!-- Swimming -->
-    <section class="hobby">
+    <section class="hobby" data-glyph="swim">
+      <div class="glyph-panel" aria-hidden="true"><div class="hud"><span>01 / 05</span><b>● swim.glyph</b></div><div class="glyph"></div></div>
+      <div class="hobby-body">
       <h2>Swimming</h2>
       <p>State-level IM gold medalist and lifelong water person—swimming keeps my head clear and my routines disciplined. I approach training with curiosity, consistency, and focus.</p>
       <ul>
         <li>State-level competitive swimmer (IM gold medalist)</li>
       </ul>
+        <div class="spec"><span>Event: <b>IM</b></span><span>Level: <b>State</b></span><span>Result: <b>Gold</b></span></div>
+      </div>
     </section>
 
     <!-- Go Karting -->
-    <section class="hobby">
+    <section class="hobby" data-glyph="kart">
+      <div class="glyph-panel" aria-hidden="true"><div class="hud"><span>02 / 05</span><b>● kart.glyph</b></div><div class="glyph"></div></div>
+      <div class="hobby-body">
       <h2>Go Karting</h2>
       <p>As a car enthusiast, go-karting is the perfect way for me to combine a passion for motorsports with my competitive drive to consistently improve lap times.</p>
       <ul>
         <li>Developed focus, precision, and split-second decision making</li>
       </ul>
+        <div class="spec"><span>Goal: <b>Lap times</b></span><span>Trait: <b>Precision</b></span></div>
+      </div>
     </section>
 
     <!-- Horse Riding -->
-    <section class="hobby">
+    <section class="hobby" data-glyph="horse">
+      <div class="glyph-panel" aria-hidden="true"><div class="hud"><span>03 / 05</span><b>● horse.glyph</b></div><div class="glyph"></div></div>
+      <div class="hobby-body">
       <h2>Horse Riding</h2>
       <p>Focus, posture, and subtle cues—riding reminds me how much communication can happen without words. It’s equal parts balance, trust, and mindfulness.</p>
       <ul>
@@ -131,10 +179,14 @@
         <li>Form & balance practice</li>
         <li>Patience and trust-building exercises</li>
       </ul>
+        <div class="spec"><span>Pace: <b>Trail</b></span><span>Focus: <b>Balance</b></span></div>
+      </div>
     </section>
 
     <!-- Theatre -->
-    <section class="hobby">
+    <section class="hobby" data-glyph="theatre">
+      <div class="glyph-panel" aria-hidden="true"><div class="hud"><span>04 / 05</span><b>● theatre.glyph</b></div><div class="glyph"></div></div>
+      <div class="hobby-body">
       <h2>Theatre</h2>
       <p>Took part in Literature and Performance in High School as part of the IB Diploma, exploring how emotion, character, and language intersect on stage. The experience strengthened both my confidence and communication abilities.</p>
       <ul>
@@ -143,16 +195,22 @@
         <li>Sharpened creative thinking and adaptability</li>
         <li>Enhanced storytelling and audience engagement skills</li>
       </ul>
+        <div class="spec"><span>Program: <b>IB Lit &amp; Perf</b></span><span>Mode: <b>Ensemble</b></span><span>Gain: <b>Confidence</b></span></div>
+      </div>
     </section>
 
     <!-- Travel -->
-    <section class="hobby">
+    <section class="hobby" data-glyph="travel">
+      <div class="glyph-panel" aria-hidden="true"><div class="hud"><span>05 / 05</span><b>● travel.glyph</b></div><div class="glyph"></div></div>
+      <div class="hobby-body">
       <h2>Travel</h2>
       <p>Exploring new places broadens my perspective and creativity. From coastal sunsets to bustling cities, I document my experiences through photos and stories.</p>
       <ul>
         <li>Love discovering diverse cultures, cuisines, and landscapes</li>
         <li>View my full travel experiences <a href="travel.html">here →</a></li>
       </ul>
+        <div class="spec"><span>Places: <b>9</b></span><span>Medium: <b>Photo</b></span><span>Log: <b><a href="travel.html">Open album →</a></b></span></div>
+      </div>
     </section>
 
   </main>

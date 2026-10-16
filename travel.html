@@ -3,11 +3,40 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>addEventListener("pagereveal",function(e){var v=e.viewTransition;v&&["ready","finished","updateCallbackDone"].forEach(function(p){v[p]&&v[p].catch(function(){})})});</script>
   <title>Travel with Me — Rishi Rakesh Urs</title>
+  <meta name="description" content="A photo journal from Boston, San Francisco, Los Angeles, Lake Tahoe, Yosemite, Edinburgh, Marrakech, San Juan and India." />
+  <meta name="author" content="Rishi Rakesh Urs" />
+  <link rel="canonical" href="https://rishi-r-urs.github.io/Personal_Website_Rishi_Rakesh_Urs/travel.html" />
+  <meta name="theme-color" content="#F4F4F4" />
+  <meta name="color-scheme" content="light" />
+
+  <!-- Icons -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <!-- Link previews: Open Graph (LinkedIn, iMessage, Slack, WhatsApp...) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Rishi Rakesh Urs" />
+  <meta property="og:title" content="Travel with Me — Rishi Rakesh Urs" />
+  <meta property="og:description" content="A photo journal from Boston, San Francisco, Los Angeles, Lake Tahoe, Yosemite, Edinburgh, Marrakech, San Juan and India." />
+  <meta property="og:url" content="https://rishi-r-urs.github.io/Personal_Website_Rishi_Rakesh_Urs/travel.html" />
+  <meta property="og:image" content="https://rishi-r-urs.github.io/Personal_Website_Rishi_Rakesh_Urs/img/og/og-travel.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Dot-matrix card reading Travel with Me, Rishi Rakesh Urs" />
+  <meta property="og:locale" content="en_US" />
+  <!-- X / Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Travel with Me — Rishi Rakesh Urs" />
+  <meta name="twitter:description" content="A photo journal from Boston, San Francisco, Los Angeles, Lake Tahoe, Yosemite, Edinburgh, Marrakech, San Juan and India." />
+  <meta name="twitter:image" content="https://rishi-r-urs.github.io/Personal_Website_Rishi_Rakesh_Urs/img/og/og-travel.png" />
+  <meta name="twitter:image:alt" content="Dot-matrix card reading Travel with Me, Rishi Rakesh Urs" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@400..900&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css" />
   <script defer src="script.js"></script>
@@ -113,6 +142,13 @@
       background: #fafbfd;
     }
   </style>
+  <link rel="stylesheet" href="motion.css" />
+  <link rel="stylesheet" href="theme-nothing.css" />
+  <script defer src="motion.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrambleTextPlugin.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/TextPlugin.min.js"></script>
+  <script defer src="text-fx.js"></script>
 </head>
 <body>
   <!-- Header -->
@@ -136,7 +172,7 @@
 
   <!-- Cover image -->
   <section class="travel-cover">
-    <img src="Personal_Website_Travel_With_Me.jpg" alt="Travel with Me cover image" />
+    <img src="img/full/Personal_Website_Travel_With_Me.webp" alt="Travel with Me cover image" />
   </section>
 
   <!-- Blue banner -->
@@ -162,12 +198,12 @@
     <!-- Boston -->
     <h2 id="boston" class="city">Boston</h2>
     <div class="gallery">
-      <a class="tile" href="Personal_Website_Boston_1.png" target="_blank">
-        <img src="Personal_Website_Boston_1.png" alt="Boston — 1" />
+      <a class="tile" href="img/full/Personal_Website_Boston_1.webp" target="_blank">
+        <img width="800" height="421" loading="lazy" decoding="async" src="img/thumb/Personal_Website_Boston_1.webp" alt="Boston — 1" />
         <div class="caption">Boston — 1</div>
       </a>
-      <a class="tile" href="Personal_Website_Boston_2.jpg" target="_blank">
-        <img src="Personal_Website_Boston_2.jpg" alt="Boston — 2" />
+      <a class="tile" href="img/full/Personal_Website_Boston_2.webp" target="_blank">
+        <img width="800" height="1067" loading="lazy" decoding="async" src="img/thumb/Personal_Website_Boston_2.webp" alt="Boston — 2" />
         <div class="caption">Boston — 2</div>
       </a>
     </div>
@@ -175,65 +211,65 @@
     <!-- San Francisco -->
     <h2 id="sanfrancisco" class="city">San Francisco</h2>
     <div class="gallery">
-      <a class="tile" href="Personal_Website_San_Francisco_1.JPG" target="_blank"><img src="Personal_Website_San_Francisco_1.JPG" alt="San Francisco — 1" /><div class="caption">San Francisco — 1</div></a>
-      <a class="tile" href="Personal_Website_San_Francisco_2.JPG" target="_blank"><img src="Personal_Website_San_Francisco_2.JPG" alt="San Francisco — 2" /><div class="caption">San Francisco — 2</div></a>
-      <a class="tile" href="Personal_Website_San_Francisco_3.JPG" target="_blank"><img src="Personal_Website_San_Francisco_3.JPG" alt="San Francisco — 3" /><div class="caption">San Francisco — 3</div></a>
-      <a class="tile" href="Personal_Website_San_Francisco_4.JPG" target="_blank"><img src="Personal_Website_San_Francisco_4.JPG" alt="San Francisco — 4" /><div class="caption">San Francisco — 4</div></a>
-      <a class="tile" href="Personal_Website_San_Francisco_5.JPG" target="_blank"><img src="Personal_Website_San_Francisco_5.JPG" alt="San Francisco — 5" /><div class="caption">San Francisco — 5</div></a>
-      <a class="tile" href="Personal_Website_San_Francisco_6.JPG" target="_blank"><img src="Personal_Website_San_Francisco_6.JPG" alt="San Francisco — 6" /><div class="caption">San Francisco — 6</div></a>
-      <a class="tile" href="Personal_Website_San_Francisco_7.jpg" target="_blank"><img src="Personal_Website_San_Francisco_7.jpg" alt="San Francisco — 7" /><div class="caption">San Francisco — 7</div></a>
+      <a class="tile" href="img/full/Personal_Website_San_Francisco_1.webp" target="_blank"><img width="800" height="603" loading="lazy" decoding="async" src="img/thumb/Personal_Website_San_Francisco_1.webp" alt="San Francisco — 1" /><div class="caption">San Francisco — 1</div></a>
+      <a class="tile" href="img/full/Personal_Website_San_Francisco_2.webp" target="_blank"><img width="800" height="603" loading="lazy" decoding="async" src="img/thumb/Personal_Website_San_Francisco_2.webp" alt="San Francisco — 2" /><div class="caption">San Francisco — 2</div></a>
+      <a class="tile" href="img/full/Personal_Website_San_Francisco_3.webp" target="_blank"><img width="800" height="1063" loading="lazy" decoding="async" src="img/thumb/Personal_Website_San_Francisco_3.webp" alt="San Francisco — 3" /><div class="caption">San Francisco — 3</div></a>
+      <a class="tile" href="img/full/Personal_Website_San_Francisco_4.webp" target="_blank"><img width="800" height="1063" loading="lazy" decoding="async" src="img/thumb/Personal_Website_San_Francisco_4.webp" alt="San Francisco — 4" /><div class="caption">San Francisco — 4</div></a>
+      <a class="tile" href="img/full/Personal_Website_San_Francisco_5.webp" target="_blank"><img width="800" height="1063" loading="lazy" decoding="async" src="img/thumb/Personal_Website_San_Francisco_5.webp" alt="San Francisco — 5" /><div class="caption">San Francisco — 5</div></a>
+      <a class="tile" href="img/full/Personal_Website_San_Francisco_6.webp" target="_blank"><img width="800" height="1063" loading="lazy" decoding="async" src="img/thumb/Personal_Website_San_Francisco_6.webp" alt="San Francisco — 6" /><div class="caption">San Francisco — 6</div></a>
+      <a class="tile" href="img/full/Personal_Website_San_Francisco_7.webp" target="_blank"><img width="800" height="997" loading="lazy" decoding="async" src="img/thumb/Personal_Website_San_Francisco_7.webp" alt="San Francisco — 7" /><div class="caption">San Francisco — 7</div></a>
     </div>
 
     <!-- Los Angeles -->
     <h2 id="losangeles" class="city">Los Angeles</h2>
     <div class="gallery">
-      <a class="tile" href="Personal_Website_Los_Angeles_1.JPG" target="_blank"><img src="Personal_Website_Los_Angeles_1.JPG" alt="Los Angeles — 1" /><div class="caption">Los Angeles — 1</div></a>
-      <a class="tile" href="Personal_Website_Los_Angleles_2.JPG" target="_blank"><img src="Personal_Website_Los_Angleles_2.JPG" alt="Los Angeles — 2" /><div class="caption">Los Angeles — 2</div></a>
-      <a class="tile" href="Personal_Website_Los_Angeles_3.JPG" target="_blank"><img src="Personal_Website_Los_Angeles_3.JPG" alt="Los Angeles — 3" /><div class="caption">Los Angeles — 3</div></a>
-      <a class="tile" href="Personal_Website_Los_Angeles_4.jpg" target="_blank"><img src="Personal_Website_Los_Angeles_4.jpg" alt="Los Angeles — 4" /><div class="caption">Los Angeles — 4</div></a>
+      <a class="tile" href="img/full/Personal_Website_Los_Angeles_1.webp" target="_blank"><img width="800" height="1063" loading="lazy" decoding="async" src="img/thumb/Personal_Website_Los_Angeles_1.webp" alt="Los Angeles — 1" /><div class="caption">Los Angeles — 1</div></a>
+      <a class="tile" href="img/full/Personal_Website_Los_Angleles_2.webp" target="_blank"><img width="800" height="1063" loading="lazy" decoding="async" src="img/thumb/Personal_Website_Los_Angleles_2.webp" alt="Los Angeles — 2" /><div class="caption">Los Angeles — 2</div></a>
+      <a class="tile" href="img/full/Personal_Website_Los_Angeles_3.webp" target="_blank"><img width="800" height="1063" loading="lazy" decoding="async" src="img/thumb/Personal_Website_Los_Angeles_3.webp" alt="Los Angeles — 3" /><div class="caption">Los Angeles — 3</div></a>
+      <a class="tile" href="img/full/Personal_Website_Los_Angeles_4.webp" target="_blank"><img width="800" height="600" loading="lazy" decoding="async" src="img/thumb/Personal_Website_Los_Angeles_4.webp" alt="Los Angeles — 4" /><div class="caption">Los Angeles — 4</div></a>
     </div>
 
     <!-- Lake Tahoe -->
     <h2 id="laketahoe" class="city">Lake Tahoe</h2>
     <div class="gallery">
-      <a class="tile" href="Personal_Website_Lake_Tahoe_1.JPG" target="_blank"><img src="Personal_Website_Lake_Tahoe_1.JPG" alt="Lake Tahoe — 1" /><div class="caption">Lake Tahoe — 1</div></a>
-      <a class="tile" href="Personal_Website_Lake_Tahoe_2.JPG" target="_blank"><img src="Personal_Website_Lake_Tahoe_2.JPG" alt="Lake Tahoe — 2" /><div class="caption">Lake Tahoe — 2</div></a>
+      <a class="tile" href="img/full/Personal_Website_Lake_Tahoe_1.webp" target="_blank"><img width="800" height="1063" loading="lazy" decoding="async" src="img/thumb/Personal_Website_Lake_Tahoe_1.webp" alt="Lake Tahoe — 1" /><div class="caption">Lake Tahoe — 1</div></a>
+      <a class="tile" href="img/full/Personal_Website_Lake_Tahoe_2.webp" target="_blank"><img width="800" height="1063" loading="lazy" decoding="async" src="img/thumb/Personal_Website_Lake_Tahoe_2.webp" alt="Lake Tahoe — 2" /><div class="caption">Lake Tahoe — 2</div></a>
     </div>
 
     <!-- Yosemite -->
     <h2 id="yosemite" class="city">Yosemite</h2>
     <div class="gallery">
-      <a class="tile" href="Personal_Website_Hiking_Yosemite_1.jpg" target="_blank"><img src="Personal_Website_Hiking_Yosemite_1.jpg" alt="Yosemite — 1" /><div class="caption">Yosemite — 1</div></a>
-      <a class="tile" href="Personal_Website_Hiking_Yosemite_2.jpg" target="_blank"><img src="Personal_Website_Hiking_Yosemite_2.jpg" alt="Yosemite — 2" /><div class="caption">Yosemite — 2</div></a>
+      <a class="tile" href="img/full/Personal_Website_Hiking_Yosemite_1.webp" target="_blank"><img width="800" height="1067" loading="lazy" decoding="async" src="img/thumb/Personal_Website_Hiking_Yosemite_1.webp" alt="Yosemite — 1" /><div class="caption">Yosemite — 1</div></a>
+      <a class="tile" href="img/full/Personal_Website_Hiking_Yosemite_2.webp" target="_blank"><img width="800" height="1067" loading="lazy" decoding="async" src="img/thumb/Personal_Website_Hiking_Yosemite_2.webp" alt="Yosemite — 2" /><div class="caption">Yosemite — 2</div></a>
     </div>
 
     <!-- Edinburgh -->
     <h2 id="edinburgh" class="city">Edinburgh</h2>
     <div class="gallery">
-      <a class="tile" href="Personal_Website_Edinburgh_1.jpg" target="_blank"><img src="Personal_Website_Edinburgh_1.jpg" alt="Edinburgh — 1" /><div class="caption">Edinburgh — 1</div></a>
+      <a class="tile" href="img/full/Personal_Website_Edinburgh_1.webp" target="_blank"><img width="800" height="1182" loading="lazy" decoding="async" src="img/thumb/Personal_Website_Edinburgh_1.webp" alt="Edinburgh — 1" /><div class="caption">Edinburgh — 1</div></a>
     </div>
 
     <!-- Marrakech -->
     <h2 id="marrakech" class="city">Marrakech, Morocco</h2>
     <div class="gallery">
-      <a class="tile" href="Personal_Website_Marrakech_Morocco_1.jpg" target="_blank"><img src="Personal_Website_Marrakech_Morocco_1.jpg" alt="Marrakech — 1" /><div class="caption">Marrakech — 1</div></a>
+      <a class="tile" href="img/full/Personal_Website_Marrakech_Morocco_1.webp" target="_blank"><img width="800" height="1067" loading="lazy" decoding="async" src="img/thumb/Personal_Website_Marrakech_Morocco_1.webp" alt="Marrakech — 1" /><div class="caption">Marrakech — 1</div></a>
     </div>
 
     <!-- San Juan -->
     <h2 id="sanjuan" class="city">San Juan</h2>
     <div class="gallery">
-      <a class="tile" href="Personal_Website_San_Juan_1.jpg" target="_blank"><img src="Personal_Website_San_Juan_1.jpg" alt="San Juan — 1" /><div class="caption">San Juan — 1</div></a>
-      <a class="tile" href="Personal_Website_San_Juan_2.jpg" target="_blank"><img src="Personal_Website_San_Juan_2.jpg" alt="San Juan — 2" /><div class="caption">San Juan — 2</div></a>
-      <a class="tile" href="Personal_Website_San_Juan_3.jpg" target="_blank"><img src="Personal_Website_San_Juan_3.jpg" alt="San Juan — 3" /><div class="caption">San Juan — 3</div></a>
-      <a class="tile" href="Personal_Website_San_Juan_4.jpg" target="_blank"><img src="Personal_Website_San_Juan_4.jpg" alt="San Juan — 4" /><div class="caption">San Juan — 4</div></a>
+      <a class="tile" href="img/full/Personal_Website_San_Juan_1.webp" target="_blank"><img width="800" height="1067" loading="lazy" decoding="async" src="img/thumb/Personal_Website_San_Juan_1.webp" alt="San Juan — 1" /><div class="caption">San Juan — 1</div></a>
+      <a class="tile" href="img/full/Personal_Website_San_Juan_2.webp" target="_blank"><img width="800" height="1067" loading="lazy" decoding="async" src="img/thumb/Personal_Website_San_Juan_2.webp" alt="San Juan — 2" /><div class="caption">San Juan — 2</div></a>
+      <a class="tile" href="img/full/Personal_Website_San_Juan_3.webp" target="_blank"><img width="800" height="1067" loading="lazy" decoding="async" src="img/thumb/Personal_Website_San_Juan_3.webp" alt="San Juan — 3" /><div class="caption">San Juan — 3</div></a>
+      <a class="tile" href="img/full/Personal_Website_San_Juan_4.webp" target="_blank"><img width="800" height="1067" loading="lazy" decoding="async" src="img/thumb/Personal_Website_San_Juan_4.webp" alt="San Juan — 4" /><div class="caption">San Juan — 4</div></a>
     </div>
 
     <!-- India -->
     <h2 id="india" class="city">India</h2>
     <div class="gallery">
-      <a class="tile" href="Personal_Website_India_1.JPG" target="_blank"><img src="Personal_Website_India_1.JPG" alt="India — 1" /><div class="caption">India — 1</div></a>
-      <a class="tile" href="Personal_Website_India_2.JPG" target="_blank"><img src="Personal_Website_India_2.JPG" alt="India — 2" /><div class="caption">India — 2</div></a>
-      <a class="tile" href="Personal_Website_India_3.jpg" target="_blank"><img src="Personal_Website_India_3.jpg" alt="India — 3" /><div class="caption">India — 3</div></a>
+      <a class="tile" href="img/full/Personal_Website_India_1.webp" target="_blank"><img width="720" height="1280" loading="lazy" decoding="async" src="img/thumb/Personal_Website_India_1.webp" alt="India — 1" /><div class="caption">India — 1</div></a>
+      <a class="tile" href="img/full/Personal_Website_India_2.webp" target="_blank"><img width="800" height="534" loading="lazy" decoding="async" src="img/thumb/Personal_Website_India_2.webp" alt="India — 2" /><div class="caption">India — 2</div></a>
+      <a class="tile" href="img/full/Personal_Website_India_3.webp" target="_blank"><img width="800" height="1067" loading="lazy" decoding="async" src="img/thumb/Personal_Website_India_3.webp" alt="India — 3" /><div class="caption">India — 3</div></a>
     </div>
   </main>
 

@@ -3,11 +3,40 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>addEventListener("pagereveal",function(e){var v=e.viewTransition;v&&["ready","finished","updateCallbackDone"].forEach(function(p){v[p]&&v[p].catch(function(){})})});</script>
   <title>About — Rishi Rakesh Urs</title>
+  <meta name="description" content="Rishi Rakesh Urs: Data Science and Business Administration at Northeastern, FinTech concentration, minors in Economics and AI. Education and skills." />
+  <meta name="author" content="Rishi Rakesh Urs" />
+  <link rel="canonical" href="https://rishi-r-urs.github.io/Personal_Website_Rishi_Rakesh_Urs/about.html" />
+  <meta name="theme-color" content="#F4F4F4" />
+  <meta name="color-scheme" content="light" />
+
+  <!-- Icons -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <!-- Link previews: Open Graph (LinkedIn, iMessage, Slack, WhatsApp...) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Rishi Rakesh Urs" />
+  <meta property="og:title" content="About — Rishi Rakesh Urs" />
+  <meta property="og:description" content="Rishi Rakesh Urs: Data Science and Business Administration at Northeastern, FinTech concentration, minors in Economics and AI. Education and skills." />
+  <meta property="og:url" content="https://rishi-r-urs.github.io/Personal_Website_Rishi_Rakesh_Urs/about.html" />
+  <meta property="og:image" content="https://rishi-r-urs.github.io/Personal_Website_Rishi_Rakesh_Urs/img/og/og-about.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Dot-matrix card reading About, Rishi Rakesh Urs" />
+  <meta property="og:locale" content="en_US" />
+  <!-- X / Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About — Rishi Rakesh Urs" />
+  <meta name="twitter:description" content="Rishi Rakesh Urs: Data Science and Business Administration at Northeastern, FinTech concentration, minors in Economics and AI. Education and skills." />
+  <meta name="twitter:image" content="https://rishi-r-urs.github.io/Personal_Website_Rishi_Rakesh_Urs/img/og/og-about.png" />
+  <meta name="twitter:image:alt" content="Dot-matrix card reading About, Rishi Rakesh Urs" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@400..900&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css" />
   <script defer src="script.js"></script>
@@ -97,6 +126,13 @@
       text-underline-offset: 3px;
     }
   </style>
+  <link rel="stylesheet" href="motion.css" />
+  <link rel="stylesheet" href="theme-nothing.css" />
+  <script defer src="motion.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrambleTextPlugin.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/TextPlugin.min.js"></script>
+  <script defer src="text-fx.js"></script>
 </head>
 
 <body>
@@ -122,7 +158,7 @@
 
   <!-- Hero image -->
   <section class="about-cover">
-    <img src="Personal_Website_Car.JPG" alt="Car drifting at night" />
+    <img src="img/full/Personal_Website_Car.webp" fetchpriority="high" alt="Car drifting at night" />
   </section>
 
   <!-- Blue header -->
@@ -132,9 +168,29 @@
 
   <!-- Main content -->
   <main class="about-body">
-    <p>
-      My name is Rishi Rakesh Urs, and I am currently a Data Science and Business Administration student at Northeastern University concentrating in FinTech, with minors in Economics and Interdisciplinary Artificial Intelligence. Coming from a family that specializes in the education industry, I gained early exposure to business and developed a strong appreciation for learning. My interest in data analytics stems from the joy of discovery and the culture of continuous learning and adaptability the field demands, especially with the constant evolution of new technologies. One such technology is Artificial Intelligence, which has become a pivotal tool in modern data analytics and business. As one of my professors put it, "AI will not replace your job; however, the person who knows how to use AI better than you will." I am experienced in applying data-driven approaches to solve business problems through professional and academic experiences. For my first co-op, I worked as a Marketing and Sentiment Feedback Program Specialist at Northeastern University. Here, I applied my learning by working through the entire data lifecycle: conversing with more than 3,000 students to collect feedback, analyzing that feedback to generate actionable insights, effectively communicating those insights to non technical stakeholders, and implementing student-facing initiatives. I really started to embrace data analytics after seeing the positive impact it had on the student experience. I heard students' positive feedback firsthand about the changes that were made and saw those improvements reflected in higher CSAT scores. What made me most proud was knowing that the data insights I produced and the student-focused initiatives I helped with contributed to a 194.6% increase in Community Meal Plan sales. Shifting focus into my academic experiences, in my freshman year I participated in the Northeastern Global Scholars Program, studying in London and Oakland, where I developed adaptability and gained exposure to vast cultures, food, and ways of life. While my experiences have shaped who I am today, I believe they are only the beginning of a lifelong journey of learning.
-    </p>
+    <p class="lede">My name is Rishi Rakesh Urs, and I am currently a Data Science and Business Administration student at Northeastern University concentrating in FinTech, with minors in Economics and Interdisciplinary Artificial Intelligence.</p>
+
+    <h3 class="kicker">Why data</h3>
+    <p>Coming from a family that specializes in the education industry, I gained early exposure to business and developed a strong appreciation for learning. My interest in data analytics stems from the joy of discovery and the culture of continuous learning and adaptability the field demands, especially with the constant evolution of new technologies. One such technology is Artificial Intelligence, which has become a pivotal tool in modern data analytics and business.</p>
+
+    <blockquote class="pull">AI will not replace your job; however, the person who knows how to use AI better than you will.<cite>One of my professors</cite></blockquote>
+
+    <h3 class="kicker">In practice</h3>
+    <p>I am experienced in applying data-driven approaches to solve business problems through professional and academic experiences. For my first co-op, I worked as a Marketing and Sentiment Feedback Program Specialist at Northeastern University. Here, I applied my learning by working through the entire data lifecycle: conversing with more than 3,000 students to collect feedback, analyzing that feedback to generate actionable insights, effectively communicating those insights to non technical stakeholders, and implementing student-facing initiatives.</p>
+
+    <div class="stat-strip">
+      <div class="stat"><b><span data-count="3000" data-suffix="+">3,000+</span></b><span>students I spoke with for feedback</span></div>
+      <div class="stat"><b><span data-count="194.6" data-suffix="%">194.6%</span></b><span>increase in Community Meal Plan sales</span></div>
+      <div class="stat"><b>2</b><span>Global Scholars campuses: London &amp; Oakland</span></div>
+    </div>
+
+    <p>I really started to embrace data analytics after seeing the positive impact it had on the student experience. I heard students' positive feedback firsthand about the changes that were made and saw those improvements reflected in higher CSAT scores. What made me most proud was knowing that the data insights I produced and the student-focused initiatives I helped with contributed to a 194.6% increase in Community Meal Plan sales.</p>
+
+    <h3 class="kicker">Beyond the classroom</h3>
+    <p>Shifting focus into my academic experiences, in my freshman year I participated in the Northeastern Global Scholars Program, studying in London and Oakland, where I developed adaptability and gained exposure to vast cultures, food, and ways of life.</p>
+
+    <p class="signoff">While my experiences have shaped who I am today, I believe they are only the beginning of a lifelong journey of learning.</p>
+
 
     <h3 class="facts-title">Education</h3>
 
@@ -161,20 +217,20 @@
     </ul>
 
     <h3 class="facts-title">Skills</h3>
-    <ul class="facts-list">
-      <li><span class="label">Hard Skills:</span> Data Analysis, Data Visualisation, Data Cleaning, Object-Oriented Programming, Machine Learning, Business Analytics, Marketing Analytics, Financial Analytics, Sports Analytics, Statistical Analytics, Sentiment Analysis, Predictive Modeling, Geospatial Modeling, Mathematical Modeling, Report Creation, KPI Reporting, Primary Research, Secondary Research</li>
-      <li><span class="label">Soft Skills:</span> Presentation Skills, Time Management, Critical Thinking, Cross Functional Collaboration, Adaptability, Communication</li>
-      <li><span class="label">Programming Languages:</span> Python (Pandas, NumPy, Scikit-learn, Plotly, Matplotlib, Panel, Streamlit, Flask), Java, JavaScript, CSS, HTML, SQL</li>
-      <li><span class="label">Technologies:</span> VSCode, PyCharm, DataGrip, MySQL, GitHub, Tableau, Microsoft Power BI, Microsoft Office, Google Workspace, Asana</li>
-      <li><span class="label">Languages:</span> English (Native or Bilingual proficiency), Hindi (Full professional proficiency), Kannada (Professional working proficiency), Spanish (Elementary proficiency)</li>
-    </ul>
+    <div class="skill-groups">
+      <span class="chip-label">Hard Skills</span><ul class="chips"><li>Data Analysis</li><li>Data Visualisation</li><li>Data Cleaning</li><li>Object-Oriented Programming</li><li>Machine Learning</li><li>Business Analytics</li><li>Marketing Analytics</li><li>Financial Analytics</li><li>Sports Analytics</li><li>Statistical Analytics</li><li>Sentiment Analysis</li><li>Predictive Modeling</li><li>Geospatial Modeling</li><li>Mathematical Modeling</li><li>Report Creation</li><li>KPI Reporting</li><li>Primary Research</li><li>Secondary Research</li></ul>
+      <span class="chip-label">Soft Skills</span><ul class="chips"><li>Presentation Skills</li><li>Time Management</li><li>Critical Thinking</li><li>Cross Functional Collaboration</li><li>Adaptability</li><li>Communication</li></ul>
+      <span class="chip-label">Programming Languages</span><ul class="chips"><li>Python (Pandas, NumPy, Scikit-learn, Plotly, Matplotlib, Panel, Streamlit, Flask)</li><li>Java</li><li>JavaScript</li><li>CSS</li><li>HTML</li><li>SQL</li></ul>
+      <span class="chip-label">Technologies</span><ul class="chips"><li>VSCode</li><li>PyCharm</li><li>DataGrip</li><li>MySQL</li><li>GitHub</li><li>Tableau</li><li>Microsoft Power BI</li><li>Microsoft Office</li><li>Google Workspace</li><li>Asana</li></ul>
+      <span class="chip-label">Languages</span><ul class="chips"><li>English (Native or Bilingual proficiency)</li><li>Hindi (Full professional proficiency)</li><li>Kannada (Professional working proficiency)</li><li>Spanish (Elementary proficiency)</li></ul>
+    </div>
 
     <h3 class="facts-title">Licenses & Certifications</h3>
     <p><strong>Google Data Analytics Specialization</strong><br>
       Google<br>
       Issued May 2026<br>
       Credential ID 3B81YNMVO94I<br>
-      <a class="credential-link" href="https://www.coursera.org/account/accomplishments/specialization/3B81YNMVO94I" target="_blank">Show Credential</a>
+      <a class="credential-link btn ghost" href="https://www.coursera.org/account/accomplishments/specialization/3B81YNMVO94I" target="_blank" rel="noopener">Show Credential</a>
     </p>
   </main>
 
